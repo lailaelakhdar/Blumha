@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blumha: Your GTM Partner</title>
-<meta name="description" content="Blumha is a recruitment partner for go-to-market teams, held to executive search standards. One recruiter from brief to first quarter, shortlist only, close follow-up with candidates and clients.">
+<meta name="description" content="Blumha is a recruitment partner for go-to-market teams, held to executive search standards. One recruiter end to end, from brief to hire, shortlist only, close follow-up with candidates and clients.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cg fill='%231E2233' transform='translate(200 10)'%3E%3Cpath d='M13 0 L200 138 L387 0 L387 384 L13 384 Z'/%3E%3Ccircle cx='200' cy='580' r='200'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,8 @@
     --gold:#D9A84E;
     --gold-2:#F0CF8A;
     --gold-text:#9C6F1B;
+    --naples:#FADA5E;
+    --naples-2:#FCE48C;
     --rose:#EBB9C7;
     --plum:#2B2750;
     --display:'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -114,12 +116,13 @@
   .pill:active{transform:scale(0.97);}
   .pill.solid{background:var(--ink);color:#fff;}
   .pill.solid:hover{opacity:0.86;}
-  .pill.gold{background:var(--gold);color:var(--ink);}
-  .pill.gold:hover{background:var(--gold-2);}
+  .pill.naples{background:var(--naples);color:var(--ink);}
+  .pill.naples:hover{background:var(--naples-2);}
+  .pill[disabled]{opacity:.35;cursor:not-allowed;}
   .pill.outline{border-color:var(--line-strong);color:var(--ink);background:rgba(255,255,255,0.35);}
   .pill.outline:hover{border-color:var(--ink);}
-  .pill.glass{border-color:rgba(255,255,255,0.65);color:#fff;background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
-  .pill.glass:hover{background:rgba(255,255,255,0.32);}
+  .pill.glass{border-color:rgba(255,255,255,0.8);color:var(--ink);background:rgba(255,255,255,0.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+  .pill.glass:hover{background:rgba(255,255,255,0.75);}
 
   /* ---------- HERO: lavender glass card, watercolor washes ---------- */
   .hero-wrap{padding:12px 14px 0;}
@@ -130,10 +133,10 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     padding:90px 24px 150px;
     background:
-      radial-gradient(ellipse 55% 45% at 18% 16%, rgba(255,255,255,0.55), transparent 62%),
-      radial-gradient(ellipse 45% 40% at 86% 10%, rgba(255,214,236,0.5), transparent 60%),
-      linear-gradient(160deg, #CFCAF6 0%, #BCB4F0 44%, #C6BEF3 74%, #DAD4F8 100%);
-    box-shadow:0 30px 80px rgba(90,80,170,0.18), inset 0 1px 0 rgba(255,255,255,0.6);
+      radial-gradient(ellipse 55% 45% at 18% 16%, rgba(255,255,255,0.6), transparent 62%),
+      radial-gradient(ellipse 45% 40% at 86% 10%, rgba(226,232,252,0.6), transparent 60%),
+      linear-gradient(160deg, #DAE2F8 0%, #C6D1F4 44%, #CDD7F6 74%, #E1E8FA 100%);
+    box-shadow:0 30px 80px rgba(70,95,180,0.16), inset 0 1px 0 rgba(255,255,255,0.6);
     border:1px solid rgba(255,255,255,0.5);
   }
   .hero-wash{
@@ -145,8 +148,8 @@
 
   .hero-inner{position:relative;z-index:2;text-align:center;max-width:980px;}
   .hero h1{color:#fff;margin:0 0 26px;text-shadow:0 2px 40px rgba(45,38,140,0.35);}
-  .hero h1 .kicker{display:block;font-size:clamp(26px, 3.1vw, 46px);line-height:1.1;letter-spacing:-0.01em;}
-  .hero h1 .brand{display:block;font-size:clamp(104px, 16.5vw, 240px);line-height:0.84;letter-spacing:-0.025em;margin-top:2px;}
+  .hero h1 .kicker{display:block;font-size:clamp(34px, 4.4vw, 64px);line-height:1.05;letter-spacing:-0.015em;}
+  .hero h1 .brand{display:block;font-size:clamp(92px, 13vw, 190px);line-height:0.86;letter-spacing:-0.025em;margin-top:4px;}
   .hero .lead{
     color:rgba(255,255,255,0.95); font-size:17px; line-height:1.6; max-width:58ch;
     margin:0 auto 32px; text-shadow:0 1px 16px rgba(45,38,140,0.45); text-wrap:balance;
@@ -159,12 +162,13 @@
   }
   .hstat{
     padding:16px 20px; border-radius:20px;
-    background:rgba(255,255,255,0.24); border:1px solid rgba(255,255,255,0.6);
+    background:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.8);
     backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-    display:flex; flex-direction:column; align-items:flex-start; gap:6px; color:#fff;
+    display:flex; flex-direction:column; align-items:flex-start; gap:6px; color:var(--ink);
+    box-shadow:0 10px 30px rgba(60,80,160,0.08);
   }
-  .hstat strong{font-family:var(--display);font-weight:400;font-size:36px;letter-spacing:-0.02em;line-height:1;white-space:nowrap;text-shadow:0 1px 14px rgba(45,38,140,0.35);}
-  .hstat span{font-size:13px;color:rgba(255,255,255,0.92);line-height:1.35;}
+  .hstat strong{font-family:var(--display);font-weight:400;font-size:36px;letter-spacing:-0.02em;line-height:1;white-space:nowrap;}
+  .hstat span{font-size:13px;color:var(--muted);line-height:1.35;}
 
   /* ---------- TRUSTED BY ---------- */
   .trusted{border-bottom:1px solid var(--line);padding:44px 0 40px;}
@@ -242,6 +246,8 @@
   }
   .opt:hover{border-color:var(--ink);}
   .opt.picked{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .step-actions{display:flex;align-items:center;gap:16px;margin-top:28px;flex-wrap:wrap;}
+  .step-hint{font-size:13px;color:var(--muted);}
   .step-back, .restart{margin-top:28px;font-size:13.5px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;font-family:inherit;}
   .step-back:hover, .restart:hover{color:var(--ink);}
   .result{display:none;}
@@ -323,8 +329,8 @@
     .wrap{padding:0 20px;}
     .hero-wrap{padding:10px 10px 0;}
     .hero{border-radius:24px;min-height:auto;padding:72px 20px 28px;}
-    .hero h1 .kicker{font-size:25px;}
-    .hero h1 .brand{font-size:clamp(88px, 27vw, 140px);}
+    .hero h1 .kicker{font-size:33px;}
+    .hero h1 .brand{font-size:clamp(76px, 22vw, 120px);}
     .hero .lead{font-size:15.5px;}
     .hero-stats{position:static;grid-template-columns:1fr 1fr;gap:10px;margin-top:48px;}
     .hstat{padding:14px 16px;gap:4px;}
@@ -422,10 +428,10 @@
       <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="washCore" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#5670EE"/>
-            <stop offset="0.45" stop-color="#7074EC"/>
-            <stop offset="0.75" stop-color="#A08BEB"/>
-            <stop offset="1" stop-color="#EEC4E3"/>
+            <stop offset="0" stop-color="#5B7BEE"/>
+            <stop offset="0.6" stop-color="#7089EE"/>
+            <stop offset="0.82" stop-color="#A5B5F3"/>
+            <stop offset="1" stop-color="#DDE4F9"/>
           </linearGradient>
           <filter id="washFx" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
             <feTurbulence type="fractalNoise" baseFrequency="0.0035 0.005" numOctaves="3" seed="3" result="warp"/>
@@ -443,17 +449,17 @@
         </defs>
         <g filter="url(#washFx)">
           <ellipse cx="170" cy="70" rx="440" ry="240" fill="#FFFFFF" opacity="0.7"/>
-          <ellipse cx="1330" cy="80" rx="360" ry="230" fill="#F5C2DD" opacity="0.8"/>
-          <ellipse cx="150" cy="780" rx="460" ry="230" fill="#8B83EE" opacity="0.65"/>
-          <ellipse cx="1300" cy="760" rx="440" ry="240" fill="#F2B3D3" opacity="0.7"/>
-          <ellipse cx="720" cy="370" rx="480" ry="300" fill="url(#washCore)" opacity="0.93"/>
+          <ellipse cx="1330" cy="80" rx="360" ry="230" fill="#DCE0FA" opacity="0.85"/>
+          <ellipse cx="150" cy="780" rx="460" ry="230" fill="#8199EE" opacity="0.55"/>
+          <ellipse cx="1300" cy="760" rx="440" ry="240" fill="#D9D3F5" opacity="0.6"/>
+          <ellipse cx="720" cy="370" rx="480" ry="300" fill="url(#washCore)" opacity="0.9"/>
         </g>
       </svg>
     </div>
 
     <div class="hero-inner">
       <h1><span class="kicker">Your GTM partner</span><span class="brand">blumha</span></h1>
-      <p class="lead">Go-to-market hiring held to executive search standards. Discreet outreach to the people who aren't looking, a shortlist of the few worth meeting, and a partner who stays close long after the offer is signed.</p>
+      <p class="lead">Go-to-market hiring held to executive search standards. Outreach to the people who aren't looking, a shortlist of the few worth meeting, and a partner who stays close long after the offer is signed.</p>
       <div class="hero-cta">
         <a href="#contact" class="pill solid">Start a brief</a>
         <a href="#method" class="pill glass">See the method</a>
@@ -461,7 +467,7 @@
     </div>
 
     <div class="hero-stats">
-      <div class="hstat"><strong>1</strong><span>recruiter, from brief to first quarter</span></div>
+      <div class="hstat"><strong>1</strong><span>recruiter end to end, from brief to hire</span></div>
       <div class="hstat"><strong>3 to 5</strong><span>candidates per shortlist, never a raw pipeline</span></div>
       <div class="hstat"><strong>48h</strong><span>maximum wait for a candidate to hear back</span></div>
       <div class="hstat"><strong>90 days</strong><span>of follow up after the start date</span></div>
@@ -488,7 +494,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">The Blumha method</span>
-      <h2>Three steps, one recruiter, from brief to first quarter</h2>
+      <h2>Three steps, one recruiter, from brief to hire</h2>
       <p>No handoffs and no account managers. The person who takes the brief is the person who sources, interviews, closes and follows up.</p>
     </div>
 
@@ -499,7 +505,7 @@
           <svg class="mark sm" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
         </div>
         <h3>Briefing and prep</h3>
-        <p>We start with a working session, not a job description. I map the role against the team, the market and what the first ninety days need to deliver, then write the brief we both sign off on before anyone is contacted.</p>
+        <p>We start with a working session, not a job description. I map the role against the team, the market and what the right person should be able to deliver, then write the brief we both sign off on before anyone is contacted.</p>
         <ul>
           <li>Scorecard and must-haves agreed with the hiring manager</li>
           <li>Compensation band checked against the market</li>
@@ -527,7 +533,7 @@
           <svg class="mark sm" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
         </div>
         <h3>Post hire follow up</h3>
-        <p>The signature is the midpoint, not the finish line. I stay close to both sides through the notice period, the onboarding and the first quarter. Your new hire has someone to call who knows the story from day one, and so do you.</p>
+        <p>The signature is the midpoint, not the finish line. I stay close to both sides through the notice period and the onboarding. Your new hire has someone to call who knows the story from day one, and so do you.</p>
         <ul>
           <li>Check-ins with the hire and with you at 30, 60 and 90 days</li>
           <li>Early signals raised before they become problems</li>
@@ -551,13 +557,13 @@
         <span class="num">Format 01</span>
         <h3>RPO recruiter</h3>
         <p>I join the team as your recruiter for as long as you're hiring. Talent strategy, process design, sourcing, interview loops, ATS workflows and hiring manager support. Scoped to your hiring plan, billed monthly.</p>
-        <span class="fit"><b>Fits:</b> several roles, an ongoing pipeline, or a team building its hiring engine.</span>
+        <span class="fit"><b>Fits:</b> a bigger hiring plan, an ongoing pipeline, or a team building its hiring engine.</span>
       </div>
       <div class="card format">
         <span class="num">Format 02</span>
         <h3>Success-based search</h3>
-        <p>One seat, one specialist on it. A full-cycle search on a single role, shortlist included, with no long-term commitment. Priced on placement.</p>
-        <span class="fit"><b>Fits:</b> one critical hire, a clear brief and a defined timeline.</span>
+        <p>One to five seats, one specialist on all of them. A full-cycle search for each role, shortlist included, with no long-term commitment. Priced per placement.</p>
+        <span class="fit"><b>Fits:</b> one to five hires with clear briefs and a defined timeline.</span>
       </div>
     </div>
 
@@ -586,19 +592,23 @@
 
       <div class="helper">
         <svg class="avatar bob" aria-hidden="true"><use href="#avatar"/></svg>
-        <div class="bubble" id="helperBubble" aria-live="polite">Let's build your brief. First, what are you hiring for? If it's several functions, pick the most urgent one, the brief can list the rest.</div>
+        <div class="bubble" id="helperBubble" aria-live="polite">Let's build your brief. First, what are you hiring for? Pick every function you're hiring in, then continue.</div>
       </div>
 
       <div class="step active" data-step="1">
         <div class="qlabel">Question 1 of 4</div>
         <h3>What are you hiring for?</h3>
-        <div class="options" data-group="role">
+        <div class="options" data-group="role" data-multi="true">
           <button type="button" class="opt">Sales</button>
           <button type="button" class="opt">RevOps</button>
           <button type="button" class="opt">Customer Success</button>
           <button type="button" class="opt">Growth</button>
           <button type="button" class="opt">Marketing</button>
           <button type="button" class="opt">Leadership</button>
+        </div>
+        <div class="step-actions">
+          <button type="button" class="pill solid" data-next="2" disabled>Continue</button>
+          <span class="step-hint">Select all that apply</span>
         </div>
       </div>
 
@@ -628,9 +638,11 @@
         <div class="qlabel">Question 4 of 4</div>
         <h3>What stage is the company at?</h3>
         <div class="options" data-group="stage">
-          <button type="button" class="opt">Pre-Series A</button>
-          <button type="button" class="opt">Series A to B</button>
+          <button type="button" class="opt">Early-stage</button>
+          <button type="button" class="opt">Series A to B startup</button>
           <button type="button" class="opt">Scale-up</button>
+          <button type="button" class="opt">Established business</button>
+          <button type="button" class="opt">Public company</button>
         </div>
         <button type="button" class="step-back" data-back="3">Back</button>
       </div>
@@ -641,7 +653,7 @@
         <p id="resultText"></p>
         <p class="note">The format we work in, RPO recruiter or per placement, is settled together in the briefing call.</p>
         <div class="result-actions">
-          <a href="#contact" class="pill gold" id="resultCta">Send this brief to Laila</a>
+          <a href="#contact" class="pill naples" id="resultCta">Send this brief to Laila</a>
           <button type="button" class="restart" data-restart>Start over</button>
         </div>
       </div>
@@ -755,9 +767,11 @@
           <div class="field full">
             <label>Company stage</label>
             <div class="options" data-group="stage">
-              <button type="button" class="opt">Pre-Series A</button>
-              <button type="button" class="opt">Series A to B</button>
+              <button type="button" class="opt">Early-stage</button>
+              <button type="button" class="opt">Series A to B startup</button>
               <button type="button" class="opt">Scale-up</button>
+              <button type="button" class="opt">Established business</button>
+              <button type="button" class="opt">Public company</button>
             </div>
           </div>
           <div class="field full">
@@ -769,7 +783,7 @@
             <textarea id="message" name="message" placeholder="The team, the first 90 days, past attempts, anything you'd tell me on a call."></textarea>
           </div>
           <div class="field full submit-row">
-            <button type="submit" class="pill gold">Send my brief</button>
+            <button type="submit" class="pill naples">Send my brief</button>
             <span class="fine">Opens in your email client, straight to Laila. You hear back within one business day.</span>
           </div>
         </div>
@@ -802,7 +816,7 @@
 
 <script>
   /* ---------- Guide (4 steps) ---------- */
-  const answers = { role:null, region:null, count:null, stage:null };
+  const answers = { role:[], region:null, count:null, stage:null };
   const TOTAL_STEPS = 4;
   const steps = document.querySelectorAll('#guide .step');
   const dots = document.querySelectorAll('.progress .dot');
@@ -810,7 +824,7 @@
   const bubble = document.getElementById('helperBubble');
 
   const hints = {
-    1: "Let's build your brief. First, what are you hiring for? If it's several functions, pick the most urgent one, the brief can list the rest.",
+    1: "Let's build your brief. First, what are you hiring for? Pick every function you're hiring in, then continue.",
     2: "Where will the hire sit? Think about the market you want to source from, not where your headquarters are.",
     3: "Roughly is fine. This sets the pace and the way I structure the pipeline.",
     4: "Last one. Stage changes the sourcing strategy more than most people expect."
@@ -831,8 +845,16 @@
     const group = step.querySelector('[data-group]');
     if(!group) return;
     const key = group.dataset.group;
+    const multi = group.dataset.multi === 'true';
+    const next = step.querySelector('[data-next]');
     group.querySelectorAll('.opt').forEach(btn => {
       btn.addEventListener('click', () => {
+        if(multi){
+          btn.classList.toggle('picked');
+          answers[key] = [...group.querySelectorAll('.opt.picked')].map(o => o.textContent.trim());
+          if(next) next.disabled = answers[key].length === 0;
+          return;
+        }
         group.querySelectorAll('.opt').forEach(o => o.classList.remove('picked'));
         btn.classList.add('picked');
         answers[key] = btn.textContent.trim();
@@ -846,13 +868,19 @@
     });
   });
 
+  document.querySelectorAll('#guide [data-next]').forEach(btn => {
+    btn.addEventListener('click', () => { if(!btn.disabled) showStep(+btn.dataset.next); });
+  });
+
   document.querySelectorAll('#guide [data-back]').forEach(btn => {
     btn.addEventListener('click', () => showStep(+btn.dataset.back));
   });
 
   document.querySelector('[data-restart]').addEventListener('click', () => {
-    answers.role = answers.region = answers.count = answers.stage = null;
+    answers.role = [];
+    answers.region = answers.count = answers.stage = null;
     steps.forEach(s => s.querySelectorAll('.opt').forEach(o => o.classList.remove('picked')));
+    document.querySelectorAll('#guide [data-next]').forEach(b => { b.disabled = true; });
     showStep(1);
   });
 
@@ -864,20 +892,24 @@
     'Europe':'in Europe', 'North America':'in North America', 'International':'across several markets'
   };
   const stagePhrase = {
-    'Pre-Series A':'before Series A', 'Series A to B':'between Series A and B', 'Scale-up':'at scale-up stage'
+    'Early-stage':'for an early-stage company', 'Series A to B startup':'for a Series A to B startup',
+    'Scale-up':'for a scale-up', 'Established business':'for an established business', 'Public company':'for a public company'
   };
+  function joinList(list){
+    return list.length < 2 ? list.join('') : list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
+  }
 
   function showResult(){
     dots.forEach(d => { d.classList.add('done'); d.classList.remove('active'); });
     steps.forEach(s => s.classList.remove('active'));
 
-    const role = rolePhrase[answers.role] || answers.role.toLowerCase();
+    const role = joinList(answers.role.map(r => rolePhrase[r] || r.toLowerCase()));
     const region = regionPhrase[answers.region] || answers.region;
     const stage = stagePhrase[answers.stage] || answers.stage;
     let text;
 
     if(answers.count === 'Just one'){
-      text = `One ${role} hire ${region}, ${stage}. I'd take the brief in a working session, map the market in the first week and introduce a shortlist of three to five people who match it and want the job. Interviews, references and offer, I run alongside you, and I stay on through the first quarter.`;
+      text = `One ${role} hire ${region}, ${stage}. I'd take the brief in a working session, map the market in the first week and introduce a shortlist of three to five people who match it and want the job. Interviews, references and offer, I run alongside you, and I stay close through the onboarding.`;
     } else if(answers.count === '2 to 5'){
       text = `Two to five ${role} hires ${region}, ${stage}. I'd sequence the roles in the briefing, run one shared pipeline so every conversation serves several seats, and send you a written update each week. You only ever see the shortlist.`;
     } else {
@@ -896,20 +928,16 @@
 
     const msg = document.getElementById('message');
     if(!msg.value){
-      msg.value = `Hiring for: ${answers.role}\nMarkets: ${answers.region}\nOpen roles: ${answers.count}\nStage: ${answers.stage}\n\n`;
+      msg.value = `Hiring for: ${answers.role.join(', ')}\nMarkets: ${answers.region}\nOpen roles: ${answers.count}\nStage: ${answers.stage}\n\n`;
     }
   }
 
   /* ---------- Form option groups (multi + single select) ---------- */
-  function setPicked(groupKey, value){
+  function setPicked(groupKey, values){
     const group = document.querySelector(`.form-grid [data-group="${groupKey}"]`);
     if(!group) return;
-    if(group.dataset.multi !== 'true'){
-      group.querySelectorAll('.opt').forEach(o => o.classList.remove('picked'));
-    }
-    group.querySelectorAll('.opt').forEach(o => {
-      if(o.textContent.trim() === value) o.classList.add('picked');
-    });
+    const list = [].concat(values);
+    group.querySelectorAll('.opt').forEach(o => o.classList.toggle('picked', list.includes(o.textContent.trim())));
   }
 
   document.querySelectorAll('.form-grid [data-group]').forEach(group => {
