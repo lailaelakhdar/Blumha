@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blumha: RPO Recruiter for GTM Teams</title>
-<meta name="description" content="Blumha is an RPO recruiter for go-to-market teams. One recruiter from brief to first quarter, shortlist only, close follow-up with candidates and clients.">
+<title>Blumha: Your GTM Partner</title>
+<meta name="description" content="Blumha is a recruitment partner for go-to-market teams, held to executive search standards. One recruiter from brief to first quarter, shortlist only, close follow-up with candidates and clients.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cg fill='%231E2233' transform='translate(200 10)'%3E%3Cpath d='M13 0 L200 138 L387 0 L387 384 L13 384 Z'/%3E%3Ccircle cx='200' cy='580' r='200'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#E6ECF5;
@@ -25,7 +25,7 @@
     --gold-text:#9C6F1B;
     --rose:#EBB9C7;
     --plum:#2B2750;
-    --display:'Nunito', 'Inter', -apple-system, sans-serif;
+    --display:'Instrument Serif', Georgia, 'Times New Roman', serif;
     --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   *{box-sizing:border-box;}
@@ -39,7 +39,7 @@
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3{margin:0;font-family:var(--display);font-weight:800;letter-spacing:-0.025em;}
+  h1,h2,h3{margin:0;font-family:var(--display);font-weight:400;letter-spacing:-0.01em;}
   a{color:inherit;}
   .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
 
@@ -84,7 +84,10 @@
 
   /* ---------- LOGO MARK AND AVATAR ---------- */
   .mark{width:15px;height:30px;display:block;flex:none;color:var(--ink);}
-  .mark.lg{width:26px;height:50px;}
+  .avatar{display:block;flex:none;width:50px;height:81px;}
+  .avatar.bob{animation:bob 5.5s ease-in-out infinite;}
+  .helper .avatar{width:60px;height:97px;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
   .mark.sm{width:11px;height:22px;}
 
   /* ---------- NAV ---------- */
@@ -96,7 +99,7 @@
   }
   nav.wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px;}
   .logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
-  .logo span{font-family:var(--display);font-size:19px;font-weight:800;letter-spacing:-0.02em;}
+  .logo span{font-family:var(--display);font-size:25px;font-weight:400;letter-spacing:-0.01em;line-height:1;}
   .navlinks{display:flex;gap:32px;font-size:14.5px;color:var(--muted);}
   .navlinks a{text-decoration:none;transition:color .15s;}
   .navlinks a:hover, .navlinks a.current{color:var(--ink);}
@@ -118,7 +121,7 @@
   .pill.glass{border-color:rgba(255,255,255,0.65);color:#fff;background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
   .pill.glass:hover{background:rgba(255,255,255,0.32);}
 
-  /* ---------- HERO: lavender glass card ---------- */
+  /* ---------- HERO: lavender glass card, watercolor washes ---------- */
   .hero-wrap{padding:12px 14px 0;}
   .hero{
     position:relative; overflow:hidden; isolation:isolate;
@@ -127,67 +130,26 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     padding:90px 24px 150px;
     background:
-      radial-gradient(ellipse 55% 45% at 18% 16%, rgba(255,255,255,0.6), transparent 62%),
-      radial-gradient(ellipse 45% 40% at 86% 10%, rgba(255,214,236,0.55), transparent 60%),
-      radial-gradient(ellipse 70% 45% at 50% 108%, rgba(108,96,214,0.5), transparent 62%),
-      linear-gradient(160deg, #CBC6F5 0%, #B4ACEE 44%, #C0B8F2 74%, #D4CDF6 100%);
+      radial-gradient(ellipse 55% 45% at 18% 16%, rgba(255,255,255,0.55), transparent 62%),
+      radial-gradient(ellipse 45% 40% at 86% 10%, rgba(255,214,236,0.5), transparent 60%),
+      linear-gradient(160deg, #CFCAF6 0%, #BCB4F0 44%, #C6BEF3 74%, #DAD4F8 100%);
     box-shadow:0 30px 80px rgba(90,80,170,0.18), inset 0 1px 0 rgba(255,255,255,0.6);
     border:1px solid rgba(255,255,255,0.5);
   }
-
-  .obj{position:absolute;pointer-events:none;}
-  .sphere{
-    border-radius:50%;
-    background:
-      radial-gradient(circle at 30% 26%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 16%, rgba(255,255,255,0.06) 42%, rgba(255,255,255,0) 60%),
-      conic-gradient(from 200deg at 50% 50%, rgba(255,214,232,0.78), rgba(226,217,255,0.78), rgba(205,233,255,0.78), rgba(255,240,214,0.78), rgba(255,214,232,0.78));
-    box-shadow:
-      inset -30px -34px 70px rgba(105,95,210,0.4),
-      inset 20px 20px 50px rgba(255,255,255,0.78),
-      0 40px 80px rgba(70,60,150,0.28);
-    border:1px solid rgba(255,255,255,0.65);
+  .hero-wash{
+    position:absolute; inset:-4%; z-index:0; pointer-events:none;
+    will-change:transform; animation:wash 26s ease-in-out infinite alternate;
   }
-  .sphere::before{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 50% 108%, rgba(255,255,255,0.6), transparent 42%);}
-  .sphere::after{content:'';position:absolute;left:16%;top:9%;width:36%;height:22%;border-radius:50%;background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0));filter:blur(3px);}
-  .s1{width:480px;height:480px;left:50%;top:50%;margin:-262px 0 0 -240px;z-index:0;opacity:.92;animation:breathe 10s ease-in-out infinite;}
-  .s2{width:150px;height:150px;left:11%;top:13%;animation:floaty 8s ease-in-out infinite;}
-  .s3{width:88px;height:88px;right:19%;top:11%;animation:floaty 7s ease-in-out infinite reverse;}
-  .s4{width:56px;height:56px;left:24%;bottom:30%;animation:floaty 9s ease-in-out infinite;}
-  .ring{
-    width:300px;height:300px;right:4.5%;top:44%;
-    border-radius:50%;
-    background:conic-gradient(from 0deg, rgba(255,255,255,0.95), rgba(226,217,255,0.85) 25%, rgba(255,214,232,0.85) 50%, rgba(205,233,255,0.9) 75%, rgba(255,255,255,0.95));
-    -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 36px), #000 calc(100% - 35px));
-    mask:radial-gradient(farthest-side, transparent calc(100% - 36px), #000 calc(100% - 35px));
-    animation:wobble 12s ease-in-out infinite;
-  }
-  .shadow{border-radius:50%;background:rgba(60,50,150,0.38);filter:blur(30px);}
-  .sh1{width:300px;height:90px;left:50%;top:50%;margin:190px 0 0 -150px;}
-  .sh2{width:200px;height:60px;right:6%;top:64%;}
-  .sh3{width:120px;height:40px;left:11.5%;top:31%;}
-  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
-  @keyframes breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.03);}}
-  @keyframes wobble{0%,100%{transform:rotate(-24deg) scaleY(0.58);}50%{transform:rotate(-16deg) scaleY(0.64);}}
+  .hero-wash svg{width:100%;height:100%;display:block;}
+  @keyframes wash{from{transform:translate(0,0) scale(1);}to{transform:translate(-1.5%,1%) scale(1.04);}}
 
   .hero-inner{position:relative;z-index:2;text-align:center;max-width:980px;}
-  .hero .tag{
-    display:inline-block; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
-    color:rgba(255,255,255,0.9); margin-bottom:16px; font-weight:600;
-  }
-  .chip{
-    display:inline-flex; align-items:center; gap:9px; padding:8px 15px 8px 11px; border-radius:999px;
-    background:rgba(255,255,255,0.35); border:1px solid rgba(255,255,255,0.65);
-    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-    font-size:13.5px; font-weight:500; color:var(--plum); margin-bottom:28px;
-  }
-  .chip .mark{width:12px;height:23px;color:var(--plum);}
-  .hero h1{
-    font-size:clamp(46px, 7.2vw, 100px); line-height:0.98; letter-spacing:-0.035em;
-    color:#fff; text-shadow:0 2px 34px rgba(70,60,160,0.45); margin:0 0 22px; text-wrap:balance;
-  }
+  .hero h1{color:#fff;margin:0 0 26px;text-shadow:0 2px 40px rgba(45,38,140,0.35);}
+  .hero h1 .kicker{display:block;font-size:clamp(26px, 3.1vw, 46px);line-height:1.1;letter-spacing:-0.01em;}
+  .hero h1 .brand{display:block;font-size:clamp(104px, 16.5vw, 240px);line-height:0.84;letter-spacing:-0.025em;margin-top:2px;}
   .hero .lead{
-    color:rgba(255,255,255,0.94); font-size:17px; line-height:1.6; max-width:60ch;
-    margin:0 auto 32px; text-shadow:0 1px 14px rgba(70,60,160,0.35); text-wrap:balance;
+    color:rgba(255,255,255,0.95); font-size:17px; line-height:1.6; max-width:58ch;
+    margin:0 auto 32px; text-shadow:0 1px 16px rgba(45,38,140,0.45); text-wrap:balance;
   }
   .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 
@@ -197,12 +159,12 @@
   }
   .hstat{
     padding:16px 20px; border-radius:20px;
-    background:rgba(255,255,255,0.26); border:1px solid rgba(255,255,255,0.6);
+    background:rgba(255,255,255,0.24); border:1px solid rgba(255,255,255,0.6);
     backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
     display:flex; flex-direction:column; align-items:flex-start; gap:6px; color:#fff;
   }
-  .hstat strong{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-0.03em;line-height:1;white-space:nowrap;text-shadow:0 1px 14px rgba(70,60,160,0.35);}
-  .hstat span{font-size:13px;color:rgba(255,255,255,0.9);line-height:1.35;}
+  .hstat strong{font-family:var(--display);font-weight:400;font-size:36px;letter-spacing:-0.02em;line-height:1;white-space:nowrap;text-shadow:0 1px 14px rgba(45,38,140,0.35);}
+  .hstat span{font-size:13px;color:rgba(255,255,255,0.92);line-height:1.35;}
 
   /* ---------- TRUSTED BY ---------- */
   .trusted{border-bottom:1px solid var(--line);padding:44px 0 40px;}
@@ -219,7 +181,7 @@
     font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:500;
     color:var(--gold-text); margin-bottom:14px; display:block;
   }
-  .section-head h2{font-size:clamp(34px,4.2vw,54px);line-height:1.06;text-wrap:balance;}
+  .section-head h2{font-size:clamp(36px,4.6vw,60px);line-height:1.04;letter-spacing:-0.02em;text-wrap:balance;}
   .section-head p{color:var(--muted);margin:16px 0 0;font-size:16.5px;line-height:1.6;}
 
   .card{
@@ -235,7 +197,7 @@
   .method-card{padding:34px 30px;display:flex;flex-direction:column;}
   .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
   .num{font-size:12.5px;color:var(--gold-text);letter-spacing:.1em;font-weight:500;}
-  .method-card h3{font-size:24px;margin-bottom:12px;line-height:1.15;}
+  .method-card h3{font-size:30px;margin-bottom:12px;line-height:1.1;}
   .method-card p{color:var(--muted);font-size:15px;line-height:1.62;margin:0 0 20px;}
   .method-card ul{list-style:none;margin:auto 0 0;padding:18px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px;}
   .method-card li{font-size:14px;color:var(--ink-2);padding-left:18px;position:relative;line-height:1.45;}
@@ -244,13 +206,13 @@
   /* ---------- HOW WE WORK ---------- */
   .formats{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
   .format{padding:36px 32px;}
-  .format h3{font-size:28px;margin:10px 0 12px;line-height:1.15;}
+  .format h3{font-size:34px;margin:10px 0 12px;line-height:1.1;}
   .format p{color:var(--muted);font-size:15px;line-height:1.62;margin:0 0 20px;}
   .fit{display:block;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;line-height:1.5;}
   .fit b{color:var(--gold-text);font-weight:500;}
   .decide{
     margin-top:18px; padding:26px 30px;
-    display:flex; gap:20px; align-items:flex-start;
+    display:flex; gap:20px; align-items:center;
     background:linear-gradient(135deg, rgba(255,255,255,0.7), rgba(240,207,138,0.28));
   }
   .decide p{margin:0;font-size:15px;color:var(--ink-2);line-height:1.6;max-width:70ch;}
@@ -261,7 +223,7 @@
   .progress{display:flex;gap:8px;margin-bottom:34px;}
   .progress .dot{height:2px;flex:1;background:var(--line);}
   .progress .dot.done, .progress .dot.active{background:var(--ink);}
-  .helper{display:flex;align-items:flex-start;gap:16px;margin-bottom:34px;}
+  .helper{display:flex;align-items:center;gap:16px;margin-bottom:34px;}
   .bubble{
     background:var(--glass-strong); border:1px solid var(--glass-border);
     border-radius:16px; border-top-left-radius:4px;
@@ -271,7 +233,7 @@
   .step.active{display:block;animation:fadein .4s ease;}
   @keyframes fadein{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
   .qlabel{font-size:13px;color:var(--muted);margin-bottom:10px;}
-  .step h3{font-size:30px;margin-bottom:26px;max-width:26ch;line-height:1.15;}
+  .step h3{font-size:34px;margin-bottom:26px;max-width:26ch;line-height:1.1;}
   .options{display:flex;flex-wrap:wrap;gap:12px;}
   .opt{
     border:1px solid var(--line-strong); background:rgba(255,255,255,0.4); color:var(--ink);
@@ -284,7 +246,7 @@
   .step-back:hover, .restart:hover{color:var(--ink);}
   .result{display:none;}
   .result.active{display:block;animation:fadein .45s ease;}
-  .result h3{font-size:32px;margin-bottom:14px;line-height:1.15;}
+  .result h3{font-size:36px;margin-bottom:14px;line-height:1.1;}
   .result p{color:var(--muted);max-width:60ch;margin:0 0 16px;font-size:16px;line-height:1.62;}
   .result .note{font-size:13.5px;color:var(--gold-text);margin-bottom:28px;}
   .result-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
@@ -333,7 +295,7 @@
     padding:34px 0;font-size:13px;color:var(--muted);
     display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
   }
-  footer .flogo{display:flex;align-items:center;gap:9px;color:var(--ink);font-family:var(--display);font-weight:800;font-size:15px;}
+  footer .flogo{display:flex;align-items:center;gap:9px;color:var(--ink);font-family:var(--display);font-weight:400;font-size:19px;line-height:1;}
 
   /* ---------- FLOATING GUIDE ---------- */
   .fab{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
@@ -354,28 +316,19 @@
     display:flex;align-items:center;justify-content:center;transition:transform .15s;
   }
   .fab-btn:hover{transform:translateY(-2px);}
-  .fab-btn .mark{width:17px;height:33px;}
+  .fab-btn .avatar{width:30px;height:48px;}
 
-  @media(max-width:1100px){
-    .s1{width:380px;height:380px;margin:-210px 0 0 -190px;}
-    .ring{width:220px;height:220px;right:4%;top:40%;}
-  }
   @media(max-width:900px){
     .navlinks{display:none;}
     .wrap{padding:0 20px;}
     .hero-wrap{padding:10px 10px 0;}
-    .hero{border-radius:24px;min-height:auto;padding:70px 20px 28px;}
-    .hero h1{font-size:clamp(42px, 11vw, 60px);}
+    .hero{border-radius:24px;min-height:auto;padding:72px 20px 28px;}
+    .hero h1 .kicker{font-size:25px;}
+    .hero h1 .brand{font-size:clamp(88px, 27vw, 140px);}
     .hero .lead{font-size:15.5px;}
-    .s1{width:300px;height:300px;margin:-110px 0 0 -150px;opacity:.72;}
-    .s2{width:90px;height:90px;left:6%;top:7%;}
-    .s3{width:56px;height:56px;right:10%;top:6%;}
-    .s4{display:none;}
-    .ring{width:170px;height:170px;right:-60px;top:auto;bottom:210px;}
-    .sh2, .sh3{display:none;}
-    .hero-stats{position:static;grid-template-columns:1fr 1fr;gap:10px;margin-top:44px;}
-    .hstat{padding:14px 16px;gap:4px;position:relative;z-index:3;}
-    .hstat strong{font-size:26px;}
+    .hero-stats{position:static;grid-template-columns:1fr 1fr;gap:10px;margin-top:48px;}
+    .hstat{padding:14px 16px;gap:4px;}
+    .hstat strong{font-size:30px;}
     section{padding:80px 0;}
     section.tight{padding:72px 0;}
     .method-grid, .formats{grid-template-columns:1fr;}
@@ -383,12 +336,14 @@
     .form-grid{grid-template-columns:1fr;}
     .guide-box{padding:32px 22px;}
     .brief{padding:28px 20px;}
+    .avatar{width:42px;height:68px;}
+    .helper .avatar{width:48px;height:77px;}
     .fab{right:14px;bottom:14px;}
-    .fab-btn{width:46px;height:46px;}
-    .fab-btn .mark{width:13px;height:26px;}
+    .fab-btn{width:50px;height:50px;}
+    .fab-btn .avatar{width:26px;height:42px;}
   }
   @media(prefers-reduced-motion: reduce){
-    .blob, .s1, .s2, .s3, .s4, .ring{animation:none;}
+    .blob, .hero-wash, .avatar.bob{animation:none;}
   }
   :focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
 </style>
@@ -396,18 +351,42 @@
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="avFill" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="780">
+      <stop offset="0" stop-color="#4F72F2"/>
+      <stop offset="0.5" stop-color="#6275EF"/>
+      <stop offset="0.78" stop-color="#8C86EE"/>
+      <stop offset="0.93" stop-color="#CDB2EA"/>
+      <stop offset="1" stop-color="#F3D3E8"/>
+    </linearGradient>
+    <filter id="avWash" x="-30%" y="-15%" width="160%" height="130%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="5" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="40" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feGaussianBlur in="warped" stdDeviation="20" result="soft"/>
+      <feColorMatrix in="soft" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0 1" result="solid"/>
+      <feColorMatrix in="soft" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.25 0" result="a"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="1" seed="9" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="nA"/>
+      <feComposite in="a" in2="nA" operator="arithmetic" k1="0" k2="1" k3="1" k4="-0.5" result="a2"/>
+      <feComponentTransfer in="a" result="support"><feFuncA type="linear" slope="8" intercept="0"/></feComponentTransfer>
+      <feComposite in="a2" in2="support" operator="in" result="a3"/>
+      <feComposite in="solid" in2="a3" operator="in"/>
+    </filter>
+  </defs>
   <symbol id="mark" viewBox="0 0 400 780">
     <path d="M13 0 L200 138 L387 0 L387 384 L13 384 Z"/>
     <circle cx="200" cy="580" r="200"/>
   </symbol>
-  <symbol id="avatar" viewBox="0 0 400 780">
-    <path d="M13 0 L200 138 L387 0 L387 384 L13 384 Z" fill="currentColor"/>
-    <circle cx="200" cy="580" r="200" fill="currentColor"/>
-    <circle cx="150" cy="560" r="22" fill="#F4EDE2"/>
-    <circle cx="250" cy="560" r="22" fill="#F4EDE2"/>
-    <path d="M150 632 Q200 676 250 632" fill="none" stroke="#F4EDE2" stroke-width="20" stroke-linecap="round"/>
-    <circle cx="108" cy="616" r="20" fill="#EBB9C7" opacity="0.9"/>
-    <circle cx="292" cy="616" r="20" fill="#EBB9C7" opacity="0.9"/>
+  <symbol id="avatar" viewBox="-110 -110 620 1000">
+    <g filter="url(#avWash)" fill="url(#avFill)">
+      <path d="M13 0 L200 138 L387 0 L387 384 L13 384 Z"/>
+      <circle cx="200" cy="580" r="200"/>
+    </g>
+    <g fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round">
+      <path d="M116 540 Q145 504 174 540"/>
+      <path d="M226 540 Q255 504 284 540"/>
+      <path d="M146 598 Q200 660 254 598"/>
+    </g>
   </symbol>
 </svg>
 
@@ -439,22 +418,42 @@
 
 <div class="hero-wrap" id="top">
   <div class="hero">
-    <div class="obj shadow sh1" aria-hidden="true"></div>
-    <div class="obj shadow sh2" aria-hidden="true"></div>
-    <div class="obj shadow sh3" aria-hidden="true"></div>
-    <div class="obj sphere s1" aria-hidden="true"></div>
-    <div class="obj sphere s2" aria-hidden="true"></div>
-    <div class="obj sphere s3" aria-hidden="true"></div>
-    <div class="obj sphere s4" aria-hidden="true"></div>
-    <div class="obj ring" aria-hidden="true"></div>
+    <div class="hero-wash" aria-hidden="true">
+      <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="washCore" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5670EE"/>
+            <stop offset="0.45" stop-color="#7074EC"/>
+            <stop offset="0.75" stop-color="#A08BEB"/>
+            <stop offset="1" stop-color="#EEC4E3"/>
+          </linearGradient>
+          <filter id="washFx" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.0035 0.005" numOctaves="3" seed="3" result="warp"/>
+            <feDisplacementMap in="SourceGraphic" in2="warp" scale="170" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+            <feGaussianBlur in="warped" stdDeviation="46" result="soft"/>
+            <feColorMatrix in="soft" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0 1" result="solid"/>
+            <feColorMatrix in="soft" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="a"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="1" seed="8" result="n"/>
+            <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="nA"/>
+            <feComposite in="a" in2="nA" operator="arithmetic" k1="0" k2="1" k3="0.9" k4="-0.45" result="a2"/>
+            <feComponentTransfer in="a" result="support"><feFuncA type="linear" slope="10" intercept="0"/></feComponentTransfer>
+            <feComposite in="a2" in2="support" operator="in" result="a3"/>
+            <feComposite in="solid" in2="a3" operator="in"/>
+          </filter>
+        </defs>
+        <g filter="url(#washFx)">
+          <ellipse cx="170" cy="70" rx="440" ry="240" fill="#FFFFFF" opacity="0.7"/>
+          <ellipse cx="1330" cy="80" rx="360" ry="230" fill="#F5C2DD" opacity="0.8"/>
+          <ellipse cx="150" cy="780" rx="460" ry="230" fill="#8B83EE" opacity="0.65"/>
+          <ellipse cx="1300" cy="760" rx="440" ry="240" fill="#F2B3D3" opacity="0.7"/>
+          <ellipse cx="720" cy="370" rx="480" ry="300" fill="url(#washCore)" opacity="0.93"/>
+        </g>
+      </svg>
+    </div>
 
     <div class="hero-inner">
-      <span class="tag">RPO recruiter for GTM teams</span>
-      <div>
-        <span class="chip"><svg class="mark" fill="currentColor" aria-hidden="true"><use href="#avatar"/></svg>Close to the candidates. Close to you.</span>
-      </div>
-      <h1>Your RPO recruiter, inside the team.</h1>
-      <p class="lead">I plug in as your recruiter and own hiring end to end: talent strategy, process, sourcing, interviews and offer. You only ever see the shortlist, you hear from me every week, and I stay after the signature.</p>
+      <h1><span class="kicker">Your GTM partner</span><span class="brand">blumha</span></h1>
+      <p class="lead">Go-to-market hiring held to executive search standards. Discreet outreach to the people who aren't looking, a shortlist of the few worth meeting, and a partner who stays close long after the offer is signed.</p>
       <div class="hero-cta">
         <a href="#contact" class="pill solid">Start a brief</a>
         <a href="#method" class="pill glass">See the method</a>
@@ -563,7 +562,7 @@
     </div>
 
     <div class="card decide">
-      <svg class="mark lg" fill="currentColor" aria-hidden="true"><use href="#avatar"/></svg>
+      <svg class="avatar" aria-hidden="true"><use href="#avatar"/></svg>
       <p><b>The format is my recommendation, made with you in the briefing.</b> The method stays the same in both: one recruiter, a shortlist rather than a pipeline, weekly updates and follow up after the start date.</p>
     </div>
   </div>
@@ -586,7 +585,7 @@
       </div>
 
       <div class="helper">
-        <svg class="mark lg" fill="currentColor" aria-hidden="true"><use href="#avatar"/></svg>
+        <svg class="avatar bob" aria-hidden="true"><use href="#avatar"/></svg>
         <div class="bubble" id="helperBubble" aria-live="polite">Let's build your brief. First, what are you hiring for? If it's several functions, pick the most urgent one, the brief can list the rest.</div>
       </div>
 
@@ -784,7 +783,7 @@
     <svg class="mark sm" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
     <span>blumha</span>
   </div>
-  <span>RPO recruiter for GTM teams</span>
+  <span>Your GTM partner</span>
   <span>Founder &amp; Director, Laila</span>
 </footer>
 
@@ -797,7 +796,7 @@
     <a href="#contact">Start a brief</a>
   </div>
   <button type="button" class="fab-btn" id="fabBtn" aria-expanded="false" aria-controls="fabCard" aria-label="Site guide">
-    <svg class="mark" fill="currentColor" aria-hidden="true"><use href="#avatar"/></svg>
+    <svg class="avatar bob" aria-hidden="true"><use href="#avatar"/></svg>
   </button>
 </div>
 
