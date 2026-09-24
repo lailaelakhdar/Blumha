@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blumha: RPO Recruiter for GTM Teams</title>
+<meta name="description" content="Blumha is an RPO recruiter for go-to-market teams. One recruiter from brief to first quarter, shortlist only, close follow-up with candidates and clients.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='41' r='16' fill='%23F7EADB' stroke='%231E2233' stroke-opacity='0.3'/%3E%3Cpath d='M19 26 L23 11 L30 20 L32 7 L34 20 L41 11 L45 26 Z' fill='%23D9A84E'/%3E%3Crect x='18' y='24' width='28' height='5.5' rx='2.75' fill='%23B8862F'/%3E%3Ccircle cx='23' cy='10.5' r='2.5' fill='%23F0CF8A'/%3E%3Ccircle cx='32' cy='6.5' r='2.5' fill='%23F0CF8A'/%3E%3Ccircle cx='41' cy='10.5' r='2.5' fill='%23F0CF8A'/%3E%3Ccircle cx='26.5' cy='40' r='1.9' fill='%231E2233'/%3E%3Ccircle cx='37.5' cy='40' r='1.9' fill='%231E2233'/%3E%3Cpath d='M26.5 46 Q32 50.5 37.5 46' fill='none' stroke='%231E2233' stroke-width='1.9' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E6ECF5;
+    --ink:#1E2233;
+    --ink-2:rgba(30,34,51,0.74);
+    --muted:#5D667F;
+    --line:rgba(30,34,51,0.14);
+    --line-strong:rgba(30,34,51,0.32);
+    --glass:rgba(255,255,255,0.46);
+    --glass-strong:rgba(255,255,255,0.66);
+    --glass-border:rgba(255,255,255,0.72);
+    --gold:#D9A84E;
+    --gold-2:#F0CF8A;
+    --gold-text:#9C6F1B;
+    --rose:#EBB9C7;
+    --serif:'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{margin:0;font-weight:500;letter-spacing:-0.02em;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
+
+  /* ---------- BACKGROUND: sky, blurred shapes, grain ---------- */
+  .sky{
+    position:fixed; inset:0; z-index:-2; overflow:hidden;
+    background:linear-gradient(180deg, #EEF2F9 0%, #DDE4F1 28%, #C5CFE6 60%, #A6B4D4 100%);
+  }
+  .blob{
+    position:absolute; border-radius:50%;
+    filter:blur(64px); opacity:.9;
+    animation:float 32s ease-in-out infinite alternate;
+  }
+  .blob.b1{
+    width:56vw; height:56vw; left:-14vw; top:-10vw;
+    background:radial-gradient(circle at 42% 42%, rgba(255,255,255,0.98), rgba(220,226,248,0.7) 42%, transparent 70%);
+  }
+  .blob.b2{
+    width:46vw; height:46vw; right:-12vw; top:4vw;
+    background:radial-gradient(circle at 50% 50%, rgba(200,192,240,0.95), rgba(165,172,224,0.55) 48%, transparent 72%);
+    animation-delay:-9s; animation-duration:38s;
+  }
+  .blob.b3{
+    width:64vw; height:64vw; left:18vw; bottom:-34vw;
+    background:radial-gradient(circle at 50% 50%, rgba(138,158,212,0.9), rgba(118,140,200,0.45) 50%, transparent 72%);
+    animation-delay:-17s; animation-duration:42s;
+  }
+  .blob.b4{
+    width:30vw; height:30vw; left:56vw; top:38vh;
+    background:radial-gradient(circle, rgba(255,255,255,0.85), transparent 66%);
+    animation-delay:-4s; animation-duration:28s;
+  }
+  @keyframes float{
+    from{ transform:translate(0,0) scale(1); }
+    to{ transform:translate(4vw,3vh) scale(1.08); }
+  }
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:998;
+    opacity:.34; mix-blend-mode:multiply;
+    background-image:var(--noise); background-size:200px 200px;
+  }
+
+  /* ---------- AVATAR ---------- */
+  .queen{width:30px;height:30px;display:block;flex:none;}
+  .queen.lg{width:44px;height:44px;}
+  .queen.sm{width:22px;height:22px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(232,238,247,0.55);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,0.4);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo span{font-size:18px;font-weight:600;letter-spacing:-0.01em;}
+  .navlinks{display:flex;gap:32px;font-size:14.5px;color:var(--muted);}
+  .navlinks a{text-decoration:none;transition:color .15s;}
+  .navlinks a:hover, .navlinks a.current{color:var(--ink);}
+  .navright{display:flex;align-items:center;gap:14px;}
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    border-radius:999px; padding:11px 22px;
+    font-family:inherit; font-size:14px; font-weight:500;
+    text-decoration:none; cursor:pointer; border:1px solid transparent;
+    transition:transform .15s, opacity .15s, border-color .15s, background .15s;
+  }
+  .pill:active{transform:scale(0.97);}
+  .pill.solid{background:var(--ink);color:#fff;}
+  .pill.solid:hover{opacity:0.86;}
+  .pill.gold{background:var(--gold);color:var(--ink);}
+  .pill.gold:hover{background:var(--gold-2);}
+  .pill.outline{border-color:var(--line-strong);color:var(--ink);background:rgba(255,255,255,0.35);}
+  .pill.outline:hover{border-color:var(--ink);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:88vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    padding:60px 24px 28px;
+  }
+  .hero-inner{max-width:860px;position:relative;z-index:2;margin:auto 0;}
+  .orb{position:relative;width:150px;height:150px;margin:0 auto 30px;}
+  .orb::before{
+    content:''; position:absolute; inset:-34%; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,0.95), rgba(255,255,255,0.25) 46%, transparent 70%);
+    filter:blur(8px);
+  }
+  .orb .queen{
+    position:relative; width:100%; height:100%;
+    filter:drop-shadow(0 24px 40px rgba(40,50,90,0.28));
+    animation:bob 6s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .tag{
+    display:inline-block; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--gold-text); margin-bottom:18px; font-weight:500;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(46px, 7vw, 92px); line-height:1.0; letter-spacing:-0.02em;
+    margin:0 0 18px;
+  }
+  .hero .sub{
+    font-family:var(--serif); font-style:italic; font-weight:400;
+    font-size:clamp(22px, 2.4vw, 30px); color:var(--ink-2); margin:0 0 26px;
+  }
+  .hero .lead{font-size:16.5px;color:var(--ink-2);max-width:58ch;margin:0 auto 34px;line-height:1.6;}
+  .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .hero-meta{
+    width:100%; margin-top:56px;
+    display:flex; justify-content:space-between; gap:16px;
+    padding:0 88px 0 16px;
+    font-size:12.5px; color:var(--muted);
+  }
+
+  /* ---------- TRUSTED BY ---------- */
+  .trusted{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 0;background:rgba(255,255,255,0.18);}
+  .trusted-inner{display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
+  .trusted-label{font-size:12.5px;color:var(--muted);white-space:nowrap;letter-spacing:0.02em;}
+  .trusted-names{display:flex;flex-wrap:wrap;gap:8px 34px;flex:1;}
+  .trusted-names span{font-size:17px;color:var(--ink-2);font-weight:500;letter-spacing:-0.01em;}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:120px 0;}
+  section.tight{padding:100px 0;}
+  .section-head{margin-bottom:52px;max-width:620px;}
+  .eyebrow{
+    font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:500;
+    color:var(--gold-text); margin-bottom:14px; display:block;
+  }
+  .section-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,4.6vw,60px);line-height:1.04;letter-spacing:-0.02em;}
+  .section-head p{color:var(--muted);margin:16px 0 0;font-size:16.5px;line-height:1.6;}
+
+  .card{
+    background:var(--glass);
+    backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border:1px solid var(--glass-border);
+    border-radius:22px;
+    box-shadow:0 12px 44px rgba(50,60,100,0.08);
+  }
+
+  /* ---------- METHOD ---------- */
+  .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .method-card{padding:34px 30px;display:flex;flex-direction:column;}
+  .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+  .num{font-size:12.5px;color:var(--gold-text);letter-spacing:.1em;font-weight:500;}
+  .method-card h3{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:-0.01em;margin-bottom:12px;line-height:1.1;}
+  .method-card p{color:var(--muted);font-size:15px;line-height:1.62;margin:0 0 20px;}
+  .method-card ul{list-style:none;margin:auto 0 0;padding:18px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px;}
+  .method-card li{font-size:14px;color:var(--ink-2);padding-left:18px;position:relative;line-height:1.45;}
+  .method-card li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px;}
+  .stat{padding:26px 30px;display:flex;flex-direction:column;gap:4px;}
+  .stat strong{font-family:var(--serif);font-weight:400;font-size:40px;letter-spacing:-0.02em;line-height:1;}
+  .stat span{font-size:14px;color:var(--muted);}
+
+  /* ---------- HOW WE WORK ---------- */
+  .formats{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .format{padding:36px 32px;}
+  .format h3{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-0.01em;margin:10px 0 12px;line-height:1.1;}
+  .format p{color:var(--muted);font-size:15px;line-height:1.62;margin:0 0 20px;}
+  .fit{display:block;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;line-height:1.5;}
+  .fit b{color:var(--gold-text);font-weight:500;}
+  .decide{
+    margin-top:18px; padding:26px 30px;
+    display:flex; gap:18px; align-items:flex-start;
+    background:linear-gradient(135deg, rgba(255,255,255,0.7), rgba(240,207,138,0.28));
+  }
+  .decide p{margin:0;font-size:15px;color:var(--ink-2);line-height:1.6;max-width:70ch;}
+  .decide p b{font-weight:500;color:var(--ink);}
+
+  /* ---------- GUIDE ---------- */
+  .guide-box{padding:52px 56px;}
+  .progress{display:flex;gap:8px;margin-bottom:34px;}
+  .progress .dot{height:2px;flex:1;background:var(--line);}
+  .progress .dot.done, .progress .dot.active{background:var(--ink);}
+  .helper{display:flex;align-items:flex-start;gap:14px;margin-bottom:34px;}
+  .bubble{
+    background:var(--glass-strong); border:1px solid var(--glass-border);
+    border-radius:16px; border-top-left-radius:4px;
+    padding:12px 16px; font-size:14.5px; color:var(--ink-2); max-width:60ch; line-height:1.5;
+  }
+  .step{display:none;}
+  .step.active{display:block;animation:fadein .4s ease;}
+  @keyframes fadein{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .qlabel{font-size:13px;color:var(--muted);margin-bottom:10px;}
+  .step h3{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-0.01em;margin-bottom:26px;max-width:26ch;line-height:1.1;}
+  .options{display:flex;flex-wrap:wrap;gap:12px;}
+  .opt{
+    border:1px solid var(--line-strong); background:rgba(255,255,255,0.4); color:var(--ink);
+    border-radius:999px; padding:13px 22px; font-family:inherit; font-size:15px; cursor:pointer;
+    transition:border-color .15s, background .15s, color .15s;
+  }
+  .opt:hover{border-color:var(--ink);}
+  .opt.picked{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .step-back, .restart{margin-top:28px;font-size:13.5px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;font-family:inherit;}
+  .step-back:hover, .restart:hover{color:var(--ink);}
+  .result{display:none;}
+  .result.active{display:block;animation:fadein .45s ease;}
+  .result h3{font-family:var(--serif);font-weight:400;font-size:36px;letter-spacing:-0.01em;margin-bottom:14px;line-height:1.1;}
+  .result p{color:var(--muted);max-width:60ch;margin:0 0 16px;font-size:16px;line-height:1.62;}
+  .result .note{font-size:13.5px;color:var(--gold-text);margin-bottom:28px;}
+  .result-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .result-actions .restart{margin-top:0;}
+
+  /* ---------- CONTACT ---------- */
+  #contact{border-top:1px solid var(--line);}
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:72px;}
+  .process{display:flex;flex-direction:column;gap:24px;}
+  .process-step{display:flex;gap:18px;align-items:flex-start;}
+  .process-num{
+    font-size:12px;color:var(--gold-text);border:1px solid var(--line-strong);background:rgba(255,255,255,0.4);
+    border-radius:999px;width:32px;height:32px;flex:none;display:flex;align-items:center;justify-content:center;margin-top:1px;
+  }
+  .process-step strong{font-size:15.5px;font-weight:500;display:block;margin-bottom:5px;}
+  .process-step p{font-size:14px;color:var(--muted);margin:0;line-height:1.55;max-width:38ch;}
+  .info-block{font-size:14.5px;color:var(--muted);margin-top:36px;}
+  .info-block a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong);}
+  .info-block a:hover{border-color:var(--ink);}
+
+  .brief{padding:44px 44px 40px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 24px;}
+  .form-section{grid-column:1 / -1;display:flex;align-items:center;gap:14px;margin-top:10px;}
+  .form-section:first-child{margin-top:0;}
+  .form-section span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-text);white-space:nowrap;font-weight:500;}
+  .form-section::after{content:'';flex:1;height:1px;background:var(--line);}
+  .field{display:flex;flex-direction:column;gap:9px;}
+  .field.full{grid-column:1 / -1;}
+  .field label{font-size:13px;color:var(--muted);}
+  .hint{font-weight:400;color:var(--muted);font-size:12.5px;opacity:.85;}
+  .field input, .field textarea{
+    font-family:inherit; font-size:15px;
+    border:none; border-bottom:1px solid var(--line-strong);
+    background:transparent; padding:10px 2px; color:var(--ink); outline:none;
+    transition:border-color .15s; border-radius:0;
+  }
+  .field input::placeholder, .field textarea::placeholder{color:rgba(30,34,51,0.38);}
+  .field input:focus, .field textarea:focus{border-color:var(--ink);}
+  .field textarea{resize:vertical;min-height:96px;}
+  .form-grid .options .opt{padding:10px 18px;font-size:13.5px;}
+  .submit-row{display:flex;flex-direction:row;align-items:center;gap:18px;flex-wrap:wrap;margin-top:6px;}
+  .fine{font-size:12.5px;color:var(--muted);max-width:40ch;line-height:1.45;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:34px 0;font-size:13px;color:var(--muted);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  footer .flogo{display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:600;}
+
+  /* ---------- FLOATING GUIDE ---------- */
+  .fab{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+  .fab-card{
+    display:none; flex-direction:column; gap:6px; min-width:210px;
+    padding:14px 16px; border-radius:16px;
+    background:var(--glass-strong); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border:1px solid var(--glass-border); box-shadow:0 18px 44px rgba(40,50,90,0.18);
+  }
+  .fab-card.open{display:flex;animation:fadein .25s ease;}
+  .fab-card strong{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:4px;}
+  .fab-card a{text-decoration:none;font-size:14px;color:var(--muted);padding:4px 0;}
+  .fab-card a:hover, .fab-card a.current{color:var(--ink);}
+  .fab-btn{
+    width:56px;height:56px;border-radius:50%;cursor:pointer;
+    background:var(--glass-strong); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border:1px solid var(--glass-border); box-shadow:0 14px 34px rgba(40,50,90,0.2);
+    display:flex;align-items:center;justify-content:center;transition:transform .15s;
+  }
+  .fab-btn:hover{transform:translateY(-2px);}
+  .fab-btn .queen{width:34px;height:34px;}
+
+  @media(max-width:900px){
+    .navlinks{display:none;}
+    .wrap{padding:0 20px;}
+    .hero{min-height:auto;padding:56px 20px 36px;}
+    .hero-meta{padding:0;margin-top:44px;flex-direction:column;gap:4px;align-items:center;text-align:center;}
+    .orb{width:120px;height:120px;}
+    section{padding:80px 0;}
+    section.tight{padding:72px 0;}
+    .method-grid, .stats, .formats{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;gap:48px;}
+    .form-grid{grid-template-columns:1fr;}
+    .guide-box{padding:32px 22px;}
+    .brief{padding:28px 20px;}
+    .fab{right:16px;bottom:16px;}
+  }
+  @media(prefers-reduced-motion: reduce){
+    .blob, .orb .queen{animation:none;}
+  }
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="queen" viewBox="0 0 64 64">
+    <circle cx="32" cy="41" r="16" fill="#F7EADB" stroke="#1E2233" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M19 26 L23 11 L30 20 L32 7 L34 20 L41 11 L45 26 Z" fill="#D9A84E"/>
+    <rect x="18" y="24" width="28" height="5.5" rx="2.75" fill="#B8862F"/>
+    <circle cx="23" cy="10.5" r="2.5" fill="#F0CF8A"/>
+    <circle cx="32" cy="6.5" r="2.5" fill="#F0CF8A"/>
+    <circle cx="41" cy="10.5" r="2.5" fill="#F0CF8A"/>
+    <circle cx="26.5" cy="40" r="1.9" fill="#1E2233"/>
+    <circle cx="37.5" cy="40" r="1.9" fill="#1E2233"/>
+    <path d="M26.5 46 Q32 50.5 37.5 46" fill="none" stroke="#1E2233" stroke-width="1.9" stroke-linecap="round"/>
+    <circle cx="22.5" cy="44.5" r="2.3" fill="#EBB9C7" opacity="0.85"/>
+    <circle cx="41.5" cy="44.5" r="2.3" fill="#EBB9C7" opacity="0.85"/>
+  </symbol>
+</svg>
+
+<div class="sky" aria-hidden="true">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#top" aria-label="Blumha, back to top">
+      <svg class="queen" aria-hidden="true"><use href="#queen"/></svg>
+      <span>blumha</span>
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="#method">The method</a>
+      <a href="#work">How we work</a>
+      <a href="#guide">Build your brief</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="navright">
+      <a href="#contact" class="pill solid">Start a brief</a>
+    </div>
+  </nav>
+</header>
+
+<div class="hero" id="top">
+  <div class="hero-inner">
+    <div class="orb" aria-hidden="true">
+      <svg class="queen"><use href="#queen"/></svg>
+    </div>
+    <span class="tag">RPO recruiter for GTM teams</span>
+    <h1>Your RPO recruiter, inside the team.</h1>
+    <p class="sub">Close to the candidates. Close to you.</p>
+    <p class="lead">I plug in as your recruiter and own hiring end to end: talent strategy, process, sourcing, interviews and offer. You only ever see the shortlist, you hear from me every week, and I stay after the signature.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="pill gold">Start a brief</a>
+      <a href="#method" class="pill outline">See the method</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <span>Blumha, founded by Laila</span>
+    <span>Sales, RevOps, Customer Success, Growth, Marketing, Leadership</span>
+    <span>Europe and North America</span>
+  </div>
+</div>
+
+<div class="trusted">
+  <div class="wrap trusted-inner">
+    <div class="trusted-label">Search partner to teams at</div>
+    <div class="trusted-names">
+      <span>Bonx</span>
+      <span>Yousign</span>
+      <span>PayFit</span>
+      <span>Meilleurs Agents</span>
+      <span>SeLoger</span>
+      <span>Revlon</span>
+      <span>ISDIN</span>
+    </div>
+  </div>
+</div>
+
+<section id="method">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Blumha method</span>
+      <h2>Three steps, one recruiter, from brief to first quarter</h2>
+      <p>No handoffs and no account managers. The person who takes the brief is the person who sources, interviews, closes and follows up.</p>
+    </div>
+
+    <div class="method-grid">
+      <article class="card method-card">
+        <div class="card-top">
+          <span class="num">01</span>
+          <svg class="queen sm" aria-hidden="true"><use href="#queen"/></svg>
+        </div>
+        <h3>Briefing and prep</h3>
+        <p>We start with a working session, not a job description. I map the role against the team, the market and what the first ninety days need to deliver, then write the brief we both sign off on before anyone is contacted.</p>
+        <ul>
+          <li>Scorecard and must-haves agreed with the hiring manager</li>
+          <li>Compensation band checked against the market</li>
+          <li>Interview loop and timeline set upfront</li>
+        </ul>
+      </article>
+
+      <article class="card method-card">
+        <div class="card-top">
+          <span class="num">02</span>
+          <svg class="queen sm" aria-hidden="true"><use href="#queen"/></svg>
+        </div>
+        <h3>Sourcing and tracking</h3>
+        <p>I go to market on your behalf and run every first conversation myself. You never receive a raw pipeline: I introduce the shortlist only, the people who match the brief and want the job. Every candidate is tracked from first message to final answer, so nobody is left waiting.</p>
+        <ul>
+          <li>Shortlist only, matched to the brief</li>
+          <li>Weekly written pipeline update</li>
+          <li>Candidate feedback within 48 hours of each step</li>
+        </ul>
+      </article>
+
+      <article class="card method-card">
+        <div class="card-top">
+          <span class="num">03</span>
+          <svg class="queen sm" aria-hidden="true"><use href="#queen"/></svg>
+        </div>
+        <h3>Post hire follow up</h3>
+        <p>The signature is the midpoint, not the finish line. I stay close to both sides through the notice period, the onboarding and the first quarter. Your new hire has someone to call who knows the story from day one, and so do you.</p>
+        <ul>
+          <li>Check-ins with the hire and with you at 30, 60 and 90 days</li>
+          <li>Early signals raised before they become problems</li>
+          <li>Runner-up candidates kept warm for the next role</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="stats">
+      <div class="card stat"><strong>1</strong><span>point of contact, from brief to first quarter</span></div>
+      <div class="card stat"><strong>48h</strong><span>maximum wait for a candidate to hear back</span></div>
+      <div class="card stat"><strong>90 days</strong><span>of follow up after the start date</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="tight">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How we work</span>
+      <h2>Two formats, one decision we make together</h2>
+      <p>You don't pick from a menu. In the briefing we look at volume, timeline, budget and how your team likes to work, and I recommend the format that gets the hire done.</p>
+    </div>
+
+    <div class="formats">
+      <div class="card format">
+        <span class="num">Format 01</span>
+        <h3>RPO recruiter</h3>
+        <p>I join the team as your recruiter for as long as you're hiring. Talent strategy, process design, sourcing, interview loops, ATS workflows and hiring manager support. Scoped to your hiring plan, billed monthly.</p>
+        <span class="fit"><b>Fits:</b> several roles, an ongoing pipeline, or a team building its hiring engine.</span>
+      </div>
+      <div class="card format">
+        <span class="num">Format 02</span>
+        <h3>Success-based search</h3>
+        <p>One seat, one specialist on it. A full-cycle search on a single role, shortlist included, with no long-term commitment. Priced on placement.</p>
+        <span class="fit"><b>Fits:</b> one critical hire, a clear brief and a defined timeline.</span>
+      </div>
+    </div>
+
+    <div class="card decide">
+      <svg class="queen lg" aria-hidden="true"><use href="#queen"/></svg>
+      <p><b>The format is my recommendation, made with you in the briefing.</b> The method stays the same in both: one recruiter, a shortlist rather than a pipeline, weekly updates and follow up after the start date.</p>
+    </div>
+  </div>
+</section>
+
+<section id="guide">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Build your brief</span>
+      <h2>Four questions, one search plan</h2>
+      <p>Answer four quick questions and I'll show you how I'd run the search. Your answers land in the brief form below, ready to send.</p>
+    </div>
+
+    <div class="card guide-box">
+      <div class="progress" aria-hidden="true">
+        <div class="dot active" data-dot="1"></div>
+        <div class="dot" data-dot="2"></div>
+        <div class="dot" data-dot="3"></div>
+        <div class="dot" data-dot="4"></div>
+      </div>
+
+      <div class="helper">
+        <svg class="queen lg" aria-hidden="true"><use href="#queen"/></svg>
+        <div class="bubble" id="helperBubble" aria-live="polite">Let's build your brief. First, what are you hiring for? If it's several functions, pick the most urgent one, the brief can list the rest.</div>
+      </div>
+
+      <div class="step active" data-step="1">
+        <div class="qlabel">Question 1 of 4</div>
+        <h3>What are you hiring for?</h3>
+        <div class="options" data-group="role">
+          <button type="button" class="opt">Sales</button>
+          <button type="button" class="opt">RevOps</button>
+          <button type="button" class="opt">Customer Success</button>
+          <button type="button" class="opt">Growth</button>
+          <button type="button" class="opt">Marketing</button>
+          <button type="button" class="opt">Leadership</button>
+        </div>
+      </div>
+
+      <div class="step" data-step="2">
+        <div class="qlabel">Question 2 of 4</div>
+        <h3>Where are you hiring?</h3>
+        <div class="options" data-group="region">
+          <button type="button" class="opt">Europe</button>
+          <button type="button" class="opt">North America</button>
+          <button type="button" class="opt">International</button>
+        </div>
+        <button type="button" class="step-back" data-back="1">Back</button>
+      </div>
+
+      <div class="step" data-step="3">
+        <div class="qlabel">Question 3 of 4</div>
+        <h3>How many roles are open?</h3>
+        <div class="options" data-group="count">
+          <button type="button" class="opt">Just one</button>
+          <button type="button" class="opt">2 to 5</button>
+          <button type="button" class="opt">Ongoing pipeline</button>
+        </div>
+        <button type="button" class="step-back" data-back="2">Back</button>
+      </div>
+
+      <div class="step" data-step="4">
+        <div class="qlabel">Question 4 of 4</div>
+        <h3>What stage is the company at?</h3>
+        <div class="options" data-group="stage">
+          <button type="button" class="opt">Pre-Series A</button>
+          <button type="button" class="opt">Series A to B</button>
+          <button type="button" class="opt">Scale-up</button>
+        </div>
+        <button type="button" class="step-back" data-back="3">Back</button>
+      </div>
+
+      <div class="result" data-result>
+        <span class="eyebrow">Your search plan</span>
+        <h3 id="resultTitle">Here's how I'd run it</h3>
+        <p id="resultText"></p>
+        <p class="note">The format we work in, RPO recruiter or per placement, is settled together in the briefing call.</p>
+        <div class="result-actions">
+          <a href="#contact" class="pill gold" id="resultCta">Send this brief to Laila</a>
+          <button type="button" class="restart" data-restart>Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="tight">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:36px;">
+          <span class="eyebrow">Start a brief</span>
+          <h2>Tell me about the hire</h2>
+          <p>This is the brief I'd ask you for on a first call. Fill in what you can, I'll do the rest on the phone.</p>
+        </div>
+        <div class="process">
+          <div class="process-step">
+            <span class="process-num">01</span>
+            <div><strong>A reply within one business day</strong><p>I read every brief myself and come back with first questions, not an automated answer.</p></div>
+          </div>
+          <div class="process-step">
+            <span class="process-num">02</span>
+            <div><strong>A 30-minute briefing call</strong><p>We go through the role, the team and what good looks like. This is where we settle the format, RPO recruiter or per placement.</p></div>
+          </div>
+          <div class="process-step">
+            <span class="process-num">03</span>
+            <div><strong>A written search plan within 48 hours</strong><p>Scorecard, market map, timeline and my recommendation. You sign off, sourcing starts.</p></div>
+          </div>
+        </div>
+        <div class="info-block">Email<br><a href="mailto:laila@blumha.com">laila@blumha.com</a></div>
+      </div>
+
+      <form class="card brief" id="briefForm">
+        <div class="form-grid">
+          <div class="form-section"><span>01. You</span></div>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="title">Your role</label>
+            <input id="title" name="title" type="text" placeholder="Founder, VP Sales, Head of People" autocomplete="organization-title">
+          </div>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" required autocomplete="organization">
+          </div>
+          <div class="field full">
+            <label for="website">Company website or LinkedIn</label>
+            <input id="website" name="website" type="text" placeholder="yourcompany.com">
+          </div>
+
+          <div class="form-section"><span>02. The hire</span></div>
+          <div class="field full">
+            <label>Function <span class="hint">select all that apply</span></label>
+            <div class="options" data-group="roles" data-multi="true">
+              <button type="button" class="opt">Sales</button>
+              <button type="button" class="opt">RevOps</button>
+              <button type="button" class="opt">Customer Success</button>
+              <button type="button" class="opt">Growth</button>
+              <button type="button" class="opt">Marketing</button>
+              <button type="button" class="opt">Leadership</button>
+              <button type="button" class="opt">Other</button>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Seniority</label>
+            <div class="options" data-group="seniority">
+              <button type="button" class="opt">Individual contributor</button>
+              <button type="button" class="opt">Manager</button>
+              <button type="button" class="opt">Director+</button>
+              <button type="button" class="opt">Executive</button>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Hiring markets <span class="hint">select all that apply</span></label>
+            <div class="options" data-group="markets" data-multi="true">
+              <button type="button" class="opt">Europe</button>
+              <button type="button" class="opt">North America</button>
+              <button type="button" class="opt">International</button>
+            </div>
+          </div>
+          <div class="field full">
+            <label for="location">City, hub or remote policy</label>
+            <input id="location" name="location" type="text" placeholder="Paris hub, remote across the EU, hybrid in London">
+          </div>
+          <div class="field full">
+            <label>Open roles</label>
+            <div class="options" data-group="count">
+              <button type="button" class="opt">Just one</button>
+              <button type="button" class="opt">2 to 5</button>
+              <button type="button" class="opt">Ongoing pipeline</button>
+            </div>
+          </div>
+          <div class="field full">
+            <label>When should the first hire start?</label>
+            <div class="options" data-group="timeline">
+              <button type="button" class="opt">Within a month</button>
+              <button type="button" class="opt">This quarter</button>
+              <button type="button" class="opt">Next quarter</button>
+              <button type="button" class="opt">Not fixed yet</button>
+            </div>
+          </div>
+
+          <div class="form-section"><span>03. The context</span></div>
+          <div class="field full">
+            <label>Company stage</label>
+            <div class="options" data-group="stage">
+              <button type="button" class="opt">Pre-Series A</button>
+              <button type="button" class="opt">Series A to B</button>
+              <button type="button" class="opt">Scale-up</button>
+            </div>
+          </div>
+          <div class="field full">
+            <label for="comp">Compensation band <span class="hint">optional, it helps me calibrate the market from day one</span></label>
+            <input id="comp" name="comp" type="text" placeholder="80k to 110k base plus variable">
+          </div>
+          <div class="field full">
+            <label for="message">What does great look like, and what has made this hire hard so far?</label>
+            <textarea id="message" name="message" placeholder="The team, the first 90 days, past attempts, anything you'd tell me on a call."></textarea>
+          </div>
+          <div class="field full submit-row">
+            <button type="submit" class="pill gold">Send my brief</button>
+            <span class="fine">Opens in your email client, straight to Laila. You hear back within one business day.</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="flogo">
+    <svg class="queen sm" aria-hidden="true"><use href="#queen"/></svg>
+    <span>blumha</span>
+  </div>
+  <span>RPO recruiter for GTM teams</span>
+  <span>Founder &amp; Director, Laila</span>
+</footer>
+
+<div class="fab" id="fab">
+  <div class="fab-card" id="fabCard">
+    <strong>Where to?</strong>
+    <a href="#method">The method</a>
+    <a href="#work">How we work</a>
+    <a href="#guide">Build your brief</a>
+    <a href="#contact">Start a brief</a>
+  </div>
+  <button type="button" class="fab-btn" id="fabBtn" aria-expanded="false" aria-controls="fabCard" aria-label="Site guide">
+    <svg class="queen" aria-hidden="true"><use href="#queen"/></svg>
+  </button>
+</div>
+
+<script>
+  /* ---------- Guide (4 steps) ---------- */
+  const answers = { role:null, region:null, count:null, stage:null };
+  const TOTAL_STEPS = 4;
+  const steps = document.querySelectorAll('#guide .step');
+  const dots = document.querySelectorAll('.progress .dot');
+  const resultBox = document.querySelector('[data-result]');
+  const bubble = document.getElementById('helperBubble');
+
+  const hints = {
+    1: "Let's build your brief. First, what are you hiring for? If it's several functions, pick the most urgent one, the brief can list the rest.",
+    2: "Where will the hire sit? Think about the market you want to source from, not where your headquarters are.",
+    3: "Roughly is fine. This sets the pace and the way I structure the pipeline.",
+    4: "Last one. Stage changes the sourcing strategy more than most people expect."
+  };
+
+  function showStep(n){
+    steps.forEach(s => s.classList.toggle('active', s.dataset.step == n));
+    dots.forEach(d => {
+      const i = +d.dataset.dot;
+      d.classList.toggle('done', i < n);
+      d.classList.toggle('active', i === n);
+    });
+    resultBox.classList.remove('active');
+    bubble.textContent = hints[n];
+  }
+
+  steps.forEach(step => {
+    const group = step.querySelector('[data-group]');
+    if(!group) return;
+    const key = group.dataset.group;
+    group.querySelectorAll('.opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('.opt').forEach(o => o.classList.remove('picked'));
+        btn.classList.add('picked');
+        answers[key] = btn.textContent.trim();
+        const current = +step.dataset.step;
+        if(current < TOTAL_STEPS){
+          setTimeout(() => showStep(current + 1), 220);
+        } else {
+          setTimeout(showResult, 220);
+        }
+      });
+    });
+  });
+
+  document.querySelectorAll('#guide [data-back]').forEach(btn => {
+    btn.addEventListener('click', () => showStep(+btn.dataset.back));
+  });
+
+  document.querySelector('[data-restart]').addEventListener('click', () => {
+    answers.role = answers.region = answers.count = answers.stage = null;
+    steps.forEach(s => s.querySelectorAll('.opt').forEach(o => o.classList.remove('picked')));
+    showStep(1);
+  });
+
+  const rolePhrase = {
+    'Sales':'sales', 'RevOps':'RevOps', 'Customer Success':'customer success',
+    'Growth':'growth', 'Marketing':'marketing', 'Leadership':'leadership'
+  };
+  const regionPhrase = {
+    'Europe':'in Europe', 'North America':'in North America', 'International':'across several markets'
+  };
+  const stagePhrase = {
+    'Pre-Series A':'before Series A', 'Series A to B':'between Series A and B', 'Scale-up':'at scale-up stage'
+  };
+
+  function showResult(){
+    dots.forEach(d => { d.classList.add('done'); d.classList.remove('active'); });
+    steps.forEach(s => s.classList.remove('active'));
+
+    const role = rolePhrase[answers.role] || answers.role.toLowerCase();
+    const region = regionPhrase[answers.region] || answers.region;
+    const stage = stagePhrase[answers.stage] || answers.stage;
+    let text;
+
+    if(answers.count === 'Just one'){
+      text = `One ${role} hire ${region}, ${stage}. I'd take the brief in a working session, map the market in the first week and introduce a shortlist of three to five people who match it and want the job. Interviews, references and offer, I run alongside you, and I stay on through the first quarter.`;
+    } else if(answers.count === '2 to 5'){
+      text = `Two to five ${role} hires ${region}, ${stage}. I'd sequence the roles in the briefing, run one shared pipeline so every conversation serves several seats, and send you a written update each week. You only ever see the shortlist.`;
+    } else {
+      text = `An ongoing ${role} pipeline ${region}, ${stage}. I'd plug in with your team and own hiring end to end, from talent strategy to ATS workflows, with sourcing as a continuous motion rather than a series of one-off searches. Weekly reviews, one shortlist at a time.`;
+    }
+
+    document.getElementById('resultText').textContent = text;
+    bubble.textContent = "Here's how I'd run it. Send it over and I'll come back within one business day with my first questions.";
+    resultBox.classList.add('active');
+
+    // Prefill the brief form from the guide's answers
+    setPicked('roles', answers.role);
+    setPicked('markets', answers.region);
+    setPicked('count', answers.count);
+    setPicked('stage', answers.stage);
+
+    const msg = document.getElementById('message');
+    if(!msg.value){
+      msg.value = `Hiring for: ${answers.role}\nMarkets: ${answers.region}\nOpen roles: ${answers.count}\nStage: ${answers.stage}\n\n`;
+    }
+  }
+
+  /* ---------- Form option groups (multi + single select) ---------- */
+  function setPicked(groupKey, value){
+    const group = document.querySelector(`.form-grid [data-group="${groupKey}"]`);
+    if(!group) return;
+    if(group.dataset.multi !== 'true'){
+      group.querySelectorAll('.opt').forEach(o => o.classList.remove('picked'));
+    }
+    group.querySelectorAll('.opt').forEach(o => {
+      if(o.textContent.trim() === value) o.classList.add('picked');
+    });
+  }
+
+  document.querySelectorAll('.form-grid [data-group]').forEach(group => {
+    const multi = group.dataset.multi === 'true';
+    group.querySelectorAll('.opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(multi){
+          btn.classList.toggle('picked');
+        } else {
+          const already = btn.classList.contains('picked');
+          group.querySelectorAll('.opt').forEach(o => o.classList.remove('picked'));
+          if(!already) btn.classList.add('picked');
+        }
+      });
+    });
+  });
+
+  function pickedValues(groupKey){
+    const group = document.querySelector(`.form-grid [data-group="${groupKey}"]`);
+    if(!group) return '';
+    return [...group.querySelectorAll('.opt.picked')].map(o => o.textContent.trim()).join(', ');
+  }
+
+  /* ---------- Submit ---------- */
+  document.getElementById('briefForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const v = id => document.getElementById(id).value.trim();
+    const name = v('name'), title = v('title'), email = v('email'), company = v('company');
+    const website = v('website'), location = v('location'), comp = v('comp'), message = v('message');
+
+    const lines = [
+      `Name: ${name}`,
+      `Role: ${title}`,
+      `Company: ${company}`,
+      `Website: ${website}`,
+      `Email: ${email}`,
+      ``,
+      `Function(s): ${pickedValues('roles')}`,
+      `Seniority: ${pickedValues('seniority')}`,
+      `Markets: ${pickedValues('markets')}`,
+      `Location or remote policy: ${location}`,
+      `Open roles: ${pickedValues('count')}`,
+      `First start date: ${pickedValues('timeline')}`,
+      `Stage: ${pickedValues('stage')}`,
+      `Compensation band: ${comp}`,
+      ``,
+      message
+    ];
+    const subject = encodeURIComponent(`Search brief, ${company || name}`);
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = `mailto:laila@blumha.com?subject=${subject}&body=${body}`;
+  });
+
+  /* ---------- Floating guide ---------- */
+  const fabBtn = document.getElementById('fabBtn');
+  const fabCard = document.getElementById('fabCard');
+  fabBtn.addEventListener('click', () => {
+    const open = fabCard.classList.toggle('open');
+    fabBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  fabCard.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    fabCard.classList.remove('open');
+    fabBtn.setAttribute('aria-expanded', 'false');
+  }));
+  document.addEventListener('click', e => {
+    if(!document.getElementById('fab').contains(e.target)){
+      fabCard.classList.remove('open');
+      fabBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  /* ---------- Current section highlight ---------- */
+  const sectionIds = ['method', 'work', 'guide', 'contact'];
+  const links = [...document.querySelectorAll('#navlinks a, #fabCard a')];
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        const id = '#' + entry.target.id;
+        links.forEach(l => l.classList.toggle('current', l.getAttribute('href') === id));
+      });
+    }, { rootMargin:'-40% 0px -50% 0px' });
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) io.observe(el);
+    });
+  }
+</script>
+</body>
+</html>
