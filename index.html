@@ -5,25 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blumha: RPO Recruiter for GTM Teams</title>
 <meta name="description" content="Blumha is an RPO recruiter for go-to-market teams. One recruiter from brief to first quarter, shortlist only, close follow-up with candidates and clients.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cg fill='%231E1E1E' transform='translate(200 10)'%3E%3Cpath d='M13 0 L200 138 L387 0 L387 384 L13 384 Z'/%3E%3Ccircle cx='200' cy='580' r='200'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='41' r='16' fill='%23F7EADB' stroke='%231E2233' stroke-opacity='0.3'/%3E%3Cpath d='M19 26 L23 11 L30 20 L32 7 L34 20 L41 11 L45 26 Z' fill='%23D9A84E'/%3E%3Crect x='18' y='24' width='28' height='5.5' rx='2.75' fill='%23B8862F'/%3E%3Ccircle cx='23' cy='10.5' r='2.5' fill='%23F0CF8A'/%3E%3Ccircle cx='32' cy='6.5' r='2.5' fill='%23F0CF8A'/%3E%3Ccircle cx='41' cy='10.5' r='2.5' fill='%23F0CF8A'/%3E%3Ccircle cx='26.5' cy='40' r='1.9' fill='%231E2233'/%3E%3Ccircle cx='37.5' cy='40' r='1.9' fill='%231E2233'/%3E%3Cpath d='M26.5 46 Q32 50.5 37.5 46' fill='none' stroke='%231E2233' stroke-width='1.9' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kranky&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#E6ECF5;
-    --ink:#1E1E1E;
-    --ink-2:rgba(30,30,30,0.74);
+    --ink:#1E2233;
+    --ink-2:rgba(30,34,51,0.74);
     --muted:#5D667F;
-    --line:rgba(30,30,30,0.14);
-    --line-strong:rgba(30,30,30,0.32);
+    --line:rgba(30,34,51,0.14);
+    --line-strong:rgba(30,34,51,0.32);
     --glass:rgba(255,255,255,0.46);
     --glass-strong:rgba(255,255,255,0.66);
     --glass-border:rgba(255,255,255,0.72);
     --gold:#D9A84E;
     --gold-2:#F0CF8A;
     --gold-text:#9C6F1B;
-    --display:'Kranky', 'Instrument Serif', Georgia, serif;
+    --rose:#EBB9C7;
+    --serif:'Instrument Serif', Georgia, 'Times New Roman', serif;
     --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   *{box-sizing:border-box;}
@@ -37,7 +38,7 @@
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3{margin:0;font-family:var(--display);font-weight:400;letter-spacing:0;}
+  h1,h2,h3{margin:0;font-weight:500;letter-spacing:-0.02em;}
   a{color:inherit;}
   .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
 
@@ -80,10 +81,10 @@
     background-image:var(--noise); background-size:200px 200px;
   }
 
-  /* ---------- LOGO MARK ---------- */
-  .mark{width:15px;height:30px;display:block;flex:none;color:var(--ink);}
-  .mark.lg{width:24px;height:47px;}
-  .mark.sm{width:11px;height:22px;}
+  /* ---------- AVATAR ---------- */
+  .queen{width:30px;height:30px;display:block;flex:none;}
+  .queen.lg{width:44px;height:44px;}
+  .queen.sm{width:22px;height:22px;}
 
   /* ---------- NAV ---------- */
   header{
@@ -92,8 +93,8 @@
     backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
     border-bottom:1px solid rgba(255,255,255,0.4);
   }
-  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px;}
-  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
   .logo span{font-size:18px;font-weight:600;letter-spacing:-0.01em;}
   .navlinks{display:flex;gap:32px;font-size:14.5px;color:var(--muted);}
   .navlinks a{text-decoration:none;transition:color .15s;}
@@ -111,42 +112,52 @@
   .pill.solid:hover{opacity:0.86;}
   .pill.gold{background:var(--gold);color:var(--ink);}
   .pill.gold:hover{background:var(--gold-2);}
-  .pill.outline{border-color:var(--line-strong);color:var(--ink);background:rgba(255,255,255,0.45);}
+  .pill.outline{border-color:var(--line-strong);color:var(--ink);background:rgba(255,255,255,0.35);}
   .pill.outline:hover{border-color:var(--ink);}
 
-  /* ---------- HERO: landscape ---------- */
+  /* ---------- HERO ---------- */
   .hero{
-    position:relative; overflow:hidden;
-    display:flex; flex-direction:column;
-    border-radius:0 0 30px 30px;
-    background:
-      radial-gradient(ellipse 34% 26% at 78% 6%, rgba(255,247,220,0.95), transparent 70%),
-      linear-gradient(180deg, #BDD5EE 0%, #D2E1F3 38%, #E4EDF7 62%, #EEF2F7 100%);
+    position:relative; min-height:88vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    padding:60px 24px 28px;
   }
-  .hero-text{position:relative;z-index:2;text-align:center;padding:52px 24px 0;}
+  .hero-inner{max-width:860px;position:relative;z-index:2;margin:auto 0;}
+  .orb{position:relative;width:150px;height:150px;margin:0 auto 30px;}
+  .orb::before{
+    content:''; position:absolute; inset:-34%; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,0.95), rgba(255,255,255,0.25) 46%, transparent 70%);
+    filter:blur(8px);
+  }
+  .orb .queen{
+    position:relative; width:100%; height:100%;
+    filter:drop-shadow(0 24px 40px rgba(40,50,90,0.28));
+    animation:bob 6s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
   .tag{
     display:inline-block; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
-    color:var(--gold-text); margin-bottom:16px; font-weight:500;
+    color:var(--gold-text); margin-bottom:18px; font-weight:500;
   }
-  .hero h1{font-size:clamp(46px, 6.4vw, 88px);line-height:1.02;margin:0 0 14px;text-wrap:balance;}
-  .hero .sub{font-family:var(--display);font-size:clamp(21px, 2.3vw, 30px);color:var(--ink-2);margin:0;text-wrap:balance;}
-  .hero-scene{position:relative;height:clamp(360px, 36vw, 720px);margin-top:-24px;}
-  .hero-scene svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
-  .hero-mark{transform-box:fill-box;transform-origin:50% 100%;animation:bob 6s ease-in-out infinite;}
-  .hero-glow{transform-box:fill-box;transform-origin:50% 50%;animation:pulse 6s ease-in-out infinite;}
-  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
-  @keyframes pulse{0%,100%{transform:scale(1);opacity:.9;}50%{transform:scale(1.08);opacity:1;}}
-  .hero-card{
-    position:absolute; left:40px; bottom:34px; z-index:3; max-width:440px;
-    padding:20px 22px; border-radius:20px;
-    background:rgba(255,255,255,0.58); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-    border:1px solid rgba(255,255,255,0.75); box-shadow:0 14px 40px rgba(30,50,40,0.14);
+  .hero h1{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(46px, 7vw, 92px); line-height:1.0; letter-spacing:-0.02em;
+    margin:0 0 18px;
   }
-  .hero-card p{margin:0 0 16px;font-size:15px;line-height:1.55;color:var(--ink-2);}
-  .hero-cta{display:flex;gap:10px;flex-wrap:wrap;}
+  .hero .sub{
+    font-family:var(--serif); font-style:italic; font-weight:400;
+    font-size:clamp(22px, 2.4vw, 30px); color:var(--ink-2); margin:0 0 26px;
+  }
+  .hero .lead{font-size:16.5px;color:var(--ink-2);max-width:58ch;margin:0 auto 34px;line-height:1.6;}
+  .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .hero-meta{
+    width:100%; margin-top:56px;
+    display:flex; justify-content:space-between; gap:16px;
+    padding:0 88px 0 16px;
+    font-size:12.5px; color:var(--muted);
+  }
 
   /* ---------- TRUSTED BY ---------- */
-  .trusted{border-bottom:1px solid var(--line);padding:40px 0;}
+  .trusted{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 0;background:rgba(255,255,255,0.18);}
   .trusted-inner{display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
   .trusted-label{font-size:12.5px;color:var(--muted);white-space:nowrap;letter-spacing:0.02em;}
   .trusted-names{display:flex;flex-wrap:wrap;gap:8px 34px;flex:1;}
@@ -155,12 +166,12 @@
   /* ---------- SECTIONS ---------- */
   section{padding:120px 0;}
   section.tight{padding:100px 0;}
-  .section-head{margin-bottom:52px;max-width:680px;}
+  .section-head{margin-bottom:52px;max-width:620px;}
   .eyebrow{
     font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:500;
     color:var(--gold-text); margin-bottom:14px; display:block;
   }
-  .section-head h2{font-size:clamp(34px,4.2vw,56px);line-height:1.06;text-wrap:balance;}
+  .section-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,4.6vw,60px);line-height:1.04;letter-spacing:-0.02em;}
   .section-head p{color:var(--muted);margin:16px 0 0;font-size:16.5px;line-height:1.6;}
 
   .card{
@@ -176,7 +187,7 @@
   .method-card{padding:34px 30px;display:flex;flex-direction:column;}
   .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
   .num{font-size:12.5px;color:var(--gold-text);letter-spacing:.1em;font-weight:500;}
-  .method-card h3{font-size:28px;margin-bottom:12px;line-height:1.12;}
+  .method-card h3{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:-0.01em;margin-bottom:12px;line-height:1.1;}
   .method-card p{color:var(--muted);font-size:15px;line-height:1.62;margin:0 0 20px;}
   .method-card ul{list-style:none;margin:auto 0 0;padding:18px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px;}
   .method-card li{font-size:14px;color:var(--ink-2);padding-left:18px;position:relative;line-height:1.45;}
@@ -184,19 +195,19 @@
 
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px;}
   .stat{padding:26px 30px;display:flex;flex-direction:column;gap:4px;}
-  .stat strong{font-family:var(--display);font-weight:400;font-size:40px;line-height:1;}
+  .stat strong{font-family:var(--serif);font-weight:400;font-size:40px;letter-spacing:-0.02em;line-height:1;}
   .stat span{font-size:14px;color:var(--muted);}
 
   /* ---------- HOW WE WORK ---------- */
   .formats{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
   .format{padding:36px 32px;}
-  .format h3{font-size:32px;margin:10px 0 12px;line-height:1.12;}
+  .format h3{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-0.01em;margin:10px 0 12px;line-height:1.1;}
   .format p{color:var(--muted);font-size:15px;line-height:1.62;margin:0 0 20px;}
   .fit{display:block;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;line-height:1.5;}
   .fit b{color:var(--gold-text);font-weight:500;}
   .decide{
     margin-top:18px; padding:26px 30px;
-    display:flex; gap:20px; align-items:flex-start;
+    display:flex; gap:18px; align-items:flex-start;
     background:linear-gradient(135deg, rgba(255,255,255,0.7), rgba(240,207,138,0.28));
   }
   .decide p{margin:0;font-size:15px;color:var(--ink-2);line-height:1.6;max-width:70ch;}
@@ -207,7 +218,7 @@
   .progress{display:flex;gap:8px;margin-bottom:34px;}
   .progress .dot{height:2px;flex:1;background:var(--line);}
   .progress .dot.done, .progress .dot.active{background:var(--ink);}
-  .helper{display:flex;align-items:flex-start;gap:16px;margin-bottom:34px;}
+  .helper{display:flex;align-items:flex-start;gap:14px;margin-bottom:34px;}
   .bubble{
     background:var(--glass-strong); border:1px solid var(--glass-border);
     border-radius:16px; border-top-left-radius:4px;
@@ -217,7 +228,7 @@
   .step.active{display:block;animation:fadein .4s ease;}
   @keyframes fadein{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
   .qlabel{font-size:13px;color:var(--muted);margin-bottom:10px;}
-  .step h3{font-size:32px;margin-bottom:26px;max-width:26ch;line-height:1.12;}
+  .step h3{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-0.01em;margin-bottom:26px;max-width:26ch;line-height:1.1;}
   .options{display:flex;flex-wrap:wrap;gap:12px;}
   .opt{
     border:1px solid var(--line-strong); background:rgba(255,255,255,0.4); color:var(--ink);
@@ -230,7 +241,7 @@
   .step-back:hover, .restart:hover{color:var(--ink);}
   .result{display:none;}
   .result.active{display:block;animation:fadein .45s ease;}
-  .result h3{font-size:34px;margin-bottom:14px;line-height:1.12;}
+  .result h3{font-family:var(--serif);font-weight:400;font-size:36px;letter-spacing:-0.01em;margin-bottom:14px;line-height:1.1;}
   .result p{color:var(--muted);max-width:60ch;margin:0 0 16px;font-size:16px;line-height:1.62;}
   .result .note{font-size:13.5px;color:var(--gold-text);margin-bottom:28px;}
   .result-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
@@ -267,7 +278,7 @@
     background:transparent; padding:10px 2px; color:var(--ink); outline:none;
     transition:border-color .15s; border-radius:0;
   }
-  .field input::placeholder, .field textarea::placeholder{color:rgba(30,30,30,0.38);}
+  .field input::placeholder, .field textarea::placeholder{color:rgba(30,34,51,0.38);}
   .field input:focus, .field textarea:focus{border-color:var(--ink);}
   .field textarea{resize:vertical;min-height:96px;}
   .form-grid .options .opt{padding:10px 18px;font-size:13.5px;}
@@ -300,15 +311,14 @@
     display:flex;align-items:center;justify-content:center;transition:transform .15s;
   }
   .fab-btn:hover{transform:translateY(-2px);}
-  .fab-btn .mark{width:16px;height:31px;}
+  .fab-btn .queen{width:34px;height:34px;}
 
   @media(max-width:900px){
     .navlinks{display:none;}
     .wrap{padding:0 20px;}
-    .hero{border-radius:0 0 22px 22px;}
-    .hero-text{padding:40px 20px 0;}
-    .hero-scene{height:360px;margin-top:-10px;}
-    .hero-card{position:static;max-width:none;margin:-40px 16px 20px;}
+    .hero{min-height:auto;padding:56px 20px 36px;}
+    .hero-meta{padding:0;margin-top:44px;flex-direction:column;gap:4px;align-items:center;text-align:center;}
+    .orb{width:120px;height:120px;}
     section{padding:80px 0;}
     section.tight{padding:72px 0;}
     .method-grid, .stats, .formats{grid-template-columns:1fr;}
@@ -316,12 +326,10 @@
     .form-grid{grid-template-columns:1fr;}
     .guide-box{padding:32px 22px;}
     .brief{padding:28px 20px;}
-    .fab{right:14px;bottom:14px;}
-    .fab-btn{width:46px;height:46px;}
-    .fab-btn .mark{width:13px;height:26px;}
+    .fab{right:16px;bottom:16px;}
   }
   @media(prefers-reduced-motion: reduce){
-    .blob, .hero-mark, .hero-glow{animation:none;}
+    .blob, .orb .queen{animation:none;}
   }
   :focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
 </style>
@@ -329,9 +337,18 @@
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="mark" viewBox="0 0 400 780">
-    <path d="M13 0 L200 138 L387 0 L387 384 L13 384 Z"/>
-    <circle cx="200" cy="580" r="200"/>
+  <symbol id="queen" viewBox="0 0 64 64">
+    <circle cx="32" cy="41" r="16" fill="#F7EADB" stroke="#1E2233" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M19 26 L23 11 L30 20 L32 7 L34 20 L41 11 L45 26 Z" fill="#D9A84E"/>
+    <rect x="18" y="24" width="28" height="5.5" rx="2.75" fill="#B8862F"/>
+    <circle cx="23" cy="10.5" r="2.5" fill="#F0CF8A"/>
+    <circle cx="32" cy="6.5" r="2.5" fill="#F0CF8A"/>
+    <circle cx="41" cy="10.5" r="2.5" fill="#F0CF8A"/>
+    <circle cx="26.5" cy="40" r="1.9" fill="#1E2233"/>
+    <circle cx="37.5" cy="40" r="1.9" fill="#1E2233"/>
+    <path d="M26.5 46 Q32 50.5 37.5 46" fill="none" stroke="#1E2233" stroke-width="1.9" stroke-linecap="round"/>
+    <circle cx="22.5" cy="44.5" r="2.3" fill="#EBB9C7" opacity="0.85"/>
+    <circle cx="41.5" cy="44.5" r="2.3" fill="#EBB9C7" opacity="0.85"/>
   </symbol>
 </svg>
 
@@ -346,7 +363,7 @@
 <header>
   <nav class="wrap">
     <a class="logo" href="#top" aria-label="Blumha, back to top">
-      <svg class="mark" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
+      <svg class="queen" aria-hidden="true"><use href="#queen"/></svg>
       <span>blumha</span>
     </a>
     <div class="navlinks" id="navlinks">
@@ -362,110 +379,23 @@
 </header>
 
 <div class="hero" id="top">
-  <div class="hero-text">
+  <div class="hero-inner">
+    <div class="orb" aria-hidden="true">
+      <svg class="queen"><use href="#queen"/></svg>
+    </div>
     <span class="tag">RPO recruiter for GTM teams</span>
-    <h1>Your RPO recruiter,<br>inside the team.</h1>
+    <h1>Your RPO recruiter, inside the team.</h1>
     <p class="sub">Close to the candidates. Close to you.</p>
-  </div>
-
-  <div class="hero-scene" aria-hidden="true">
-    <svg viewBox="0 0 1440 540" preserveAspectRatio="xMidYMax slice">
-      <defs>
-        <linearGradient id="mtFar" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#9DB1CC"/>
-          <stop offset="1" stop-color="#CBD8E8"/>
-        </linearGradient>
-        <linearGradient id="mtNear" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#7F95B4"/>
-          <stop offset="1" stop-color="#A9BAD1"/>
-        </linearGradient>
-        <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#7FA463"/>
-          <stop offset="1" stop-color="#5C8146"/>
-        </linearGradient>
-        <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#93C25F"/>
-          <stop offset="0.55" stop-color="#5F9440"/>
-          <stop offset="1" stop-color="#3F6D31"/>
-        </linearGradient>
-        <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0" stop-color="#FFF1BF" stop-opacity="0.95"/>
-          <stop offset="0.45" stop-color="#FFE9A8" stop-opacity="0.55"/>
-          <stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="hilltop" cx="0.5" cy="0.4" r="0.6">
-          <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.35"/>
-          <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-        </radialGradient>
-        <filter id="soft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
-        <filter id="dof" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2.2"/></filter>
-      </defs>
-
-      <!-- clouds -->
-      <g filter="url(#soft)" fill="#FFFFFF" opacity="0.8">
-        <ellipse cx="250" cy="150" rx="160" ry="24"/>
-        <ellipse cx="310" cy="130" rx="90" ry="30"/>
-        <ellipse cx="1090" cy="118" rx="180" ry="22"/>
-        <ellipse cx="1150" cy="100" rx="80" ry="26"/>
-        <ellipse cx="700" cy="70" rx="120" ry="18"/>
-      </g>
-
-      <!-- far mountains -->
-      <path d="M0 360 L90 296 L170 330 L260 246 L340 300 L420 268 L520 330 L600 306 L680 350 L760 320 L850 284 L940 330 L1030 258 L1120 312 L1200 236 L1290 300 L1380 268 L1440 320 L1440 540 L0 540 Z" fill="url(#mtFar)"/>
-      <!-- near mountains -->
-      <path d="M0 404 L60 362 L140 384 L230 318 L310 372 L380 350 L470 404 L560 380 L620 412 L820 412 L900 380 L980 350 L1060 392 L1150 326 L1240 372 L1320 348 L1440 400 L1440 540 L0 540 Z" fill="url(#mtNear)"/>
-      <!-- far green hills -->
-      <path d="M0 432 C 160 400, 300 452, 460 420 S 760 442, 900 414 S 1200 442, 1440 408 L1440 540 L0 540 Z" fill="url(#hillFar)"/>
-
-      <!-- glow behind the mark -->
-      <ellipse class="hero-glow" cx="720" cy="212" rx="170" ry="130" fill="url(#glow)"/>
-
-      <!-- main hill -->
-      <path d="M150 540 C 210 420, 420 270, 720 270 C 1020 270, 1230 420, 1290 540 Z" fill="url(#hill)"/>
-      <ellipse cx="720" cy="318" rx="330" ry="70" fill="url(#hilltop)"/>
-      <g stroke="#4A7F33" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.75">
-        <path d="M560 306 q5 -13 13 -21"/><path d="M596 292 q3 -12 11 -18"/><path d="M632 282 q1 -12 9 -17"/>
-        <path d="M812 282 q-1 -12 -9 -17"/><path d="M848 292 q-3 -12 -11 -18"/><path d="M884 306 q-5 -13 -13 -21"/>
-        <path d="M470 352 q6 -12 15 -18"/><path d="M980 352 q-6 -12 -15 -18"/>
-        <path d="M400 410 q7 -10 16 -14"/><path d="M1050 412 q-7 -10 -16 -14"/>
-      </g>
-      <g fill="#C3E08A" opacity="0.8">
-        <circle cx="520" cy="360" r="2.5"/><circle cx="660" cy="300" r="2"/><circle cx="790" cy="304" r="2.5"/>
-        <circle cx="930" cy="366" r="2"/><circle cx="600" cy="420" r="2.5"/><circle cx="860" cy="430" r="2"/>
-        <circle cx="720" cy="380" r="2"/><circle cx="440" cy="450" r="2.5"/><circle cx="1000" cy="452" r="2.5"/>
-      </g>
-
-      <!-- the mark on the hilltop -->
-      <ellipse cx="720" cy="276" rx="54" ry="7" fill="#1E1E1E" opacity="0.22"/>
-      <g class="hero-mark">
-        <use href="#mark" x="680" y="114" width="80" height="156" fill="#1E1E1E"/>
-      </g>
-
-      <!-- foreground -->
-      <path d="M0 522 Q 720 488 1440 522 L1440 540 L0 540 Z" fill="#3B6531"/>
-      <g filter="url(#dof)">
-        <path d="M-20 540 C 40 468, 130 466, 210 498 C 270 520, 310 536, 330 540 Z" fill="#3E6B33"/>
-        <circle cx="62" cy="482" r="14" fill="#D8402E"/><circle cx="62" cy="482" r="4" fill="#F4C84B"/>
-        <circle cx="124" cy="502" r="11" fill="#E2523F"/><circle cx="124" cy="502" r="3.5" fill="#F4C84B"/>
-        <circle cx="28" cy="514" r="9" fill="#D8402E"/><circle cx="28" cy="514" r="3" fill="#F4C84B"/>
-        <circle cx="176" cy="490" r="8" fill="#E86A57"/><circle cx="176" cy="490" r="2.5" fill="#F4C84B"/>
-        <circle cx="96" cy="530" r="7" fill="#C93A2A"/>
-        <path d="M1460 540 C 1400 466, 1310 466, 1230 498 C 1170 520, 1130 536, 1110 540 Z" fill="#3E6B33"/>
-        <circle cx="1378" cy="482" r="14" fill="#D8402E"/><circle cx="1378" cy="482" r="4" fill="#F4C84B"/>
-        <circle cx="1316" cy="502" r="11" fill="#E2523F"/><circle cx="1316" cy="502" r="3.5" fill="#F4C84B"/>
-        <circle cx="1412" cy="514" r="9" fill="#D8402E"/><circle cx="1412" cy="514" r="3" fill="#F4C84B"/>
-        <circle cx="1264" cy="490" r="8" fill="#E86A57"/><circle cx="1264" cy="490" r="2.5" fill="#F4C84B"/>
-        <circle cx="1344" cy="530" r="7" fill="#C93A2A"/>
-      </g>
-    </svg>
-  </div>
-
-  <div class="hero-card">
-    <p>I plug in as your recruiter and own hiring end to end: talent strategy, process, sourcing, interviews and offer. You only ever see the shortlist, you hear from me every week, and I stay after the signature.</p>
+    <p class="lead">I plug in as your recruiter and own hiring end to end: talent strategy, process, sourcing, interviews and offer. You only ever see the shortlist, you hear from me every week, and I stay after the signature.</p>
     <div class="hero-cta">
       <a href="#contact" class="pill gold">Start a brief</a>
       <a href="#method" class="pill outline">See the method</a>
     </div>
+  </div>
+  <div class="hero-meta">
+    <span>Blumha, founded by Laila</span>
+    <span>Sales, RevOps, Customer Success, Growth, Marketing, Leadership</span>
+    <span>Europe and North America</span>
   </div>
 </div>
 
@@ -496,7 +426,7 @@
       <article class="card method-card">
         <div class="card-top">
           <span class="num">01</span>
-          <svg class="mark sm" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
+          <svg class="queen sm" aria-hidden="true"><use href="#queen"/></svg>
         </div>
         <h3>Briefing and prep</h3>
         <p>We start with a working session, not a job description. I map the role against the team, the market and what the first ninety days need to deliver, then write the brief we both sign off on before anyone is contacted.</p>
@@ -510,7 +440,7 @@
       <article class="card method-card">
         <div class="card-top">
           <span class="num">02</span>
-          <svg class="mark sm" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
+          <svg class="queen sm" aria-hidden="true"><use href="#queen"/></svg>
         </div>
         <h3>Sourcing and tracking</h3>
         <p>I go to market on your behalf and run every first conversation myself. You never receive a raw pipeline: I introduce the shortlist only, the people who match the brief and want the job. Every candidate is tracked from first message to final answer, so nobody is left waiting.</p>
@@ -524,7 +454,7 @@
       <article class="card method-card">
         <div class="card-top">
           <span class="num">03</span>
-          <svg class="mark sm" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
+          <svg class="queen sm" aria-hidden="true"><use href="#queen"/></svg>
         </div>
         <h3>Post hire follow up</h3>
         <p>The signature is the midpoint, not the finish line. I stay close to both sides through the notice period, the onboarding and the first quarter. Your new hire has someone to call who knows the story from day one, and so do you.</p>
@@ -568,7 +498,7 @@
     </div>
 
     <div class="card decide">
-      <svg class="mark lg" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
+      <svg class="queen lg" aria-hidden="true"><use href="#queen"/></svg>
       <p><b>The format is my recommendation, made with you in the briefing.</b> The method stays the same in both: one recruiter, a shortlist rather than a pipeline, weekly updates and follow up after the start date.</p>
     </div>
   </div>
@@ -591,7 +521,7 @@
       </div>
 
       <div class="helper">
-        <svg class="mark lg" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
+        <svg class="queen lg" aria-hidden="true"><use href="#queen"/></svg>
         <div class="bubble" id="helperBubble" aria-live="polite">Let's build your brief. First, what are you hiring for? If it's several functions, pick the most urgent one, the brief can list the rest.</div>
       </div>
 
@@ -786,7 +716,7 @@
 
 <footer class="wrap">
   <div class="flogo">
-    <svg class="mark sm" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
+    <svg class="queen sm" aria-hidden="true"><use href="#queen"/></svg>
     <span>blumha</span>
   </div>
   <span>RPO recruiter for GTM teams</span>
@@ -802,7 +732,7 @@
     <a href="#contact">Start a brief</a>
   </div>
   <button type="button" class="fab-btn" id="fabBtn" aria-expanded="false" aria-controls="fabCard" aria-label="Site guide">
-    <svg class="mark" fill="currentColor" aria-hidden="true"><use href="#mark"/></svg>
+    <svg class="queen" aria-hidden="true"><use href="#queen"/></svg>
   </button>
 </div>
 
